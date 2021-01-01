@@ -12,10 +12,10 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.example.tsundokubreak.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:id="@+id/navigation_tsundoku"
+        android:name="com.example.tsundokubreak.ui.tsundoku.TsundokuFragment"
+        android:label="@string/title_tsundoku"
+        tools:layout="@layout/fragment_tsundoku" />
 
     <fragment
         android:id="@+id/navigation_notifications"

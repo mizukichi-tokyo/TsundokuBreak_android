@@ -1,4 +1,4 @@
-package com.example.tsundokubreak.ui.dashboard
+package com.example.tsundokubreak.ui.tsundoku
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,20 +10,20 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.tsundokubreak.R
 
-class DashboardFragment : Fragment() {
+class TsundokuFragment : Fragment() {
 
-    private lateinit var dashboardViewModel: DashboardViewModel
+    private lateinit var tsundokuViewModel: TsundokuViewModel
 
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        dashboardViewModel =
-                ViewModelProvider(this).get(DashboardViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_dashboard, container, false)
-        val textView: TextView = root.findViewById(R.id.text_dashboard)
-        dashboardViewModel.text.observe(viewLifecycleOwner, Observer {
+        tsundokuViewModel =
+                ViewModelProvider(this).get(TsundokuViewModel::class.java)
+        val root = inflater.inflate(R.layout.fragment_tsundoku, container, false)
+        val textView: TextView = root.findViewById(R.id.text_tsundoku)
+        tsundokuViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
         return root
