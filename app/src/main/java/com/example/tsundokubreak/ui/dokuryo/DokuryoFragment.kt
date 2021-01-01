@@ -1,4 +1,4 @@
-package com.example.tsundokubreak.ui.notifications
+package com.example.tsundokubreak.ui.dokuryo
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,20 +10,20 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.tsundokubreak.R
 
-class NotificationsFragment : Fragment() {
+class DokuryoFragment : Fragment() {
 
-    private lateinit var notificationsViewModel: NotificationsViewModel
+    private lateinit var dokuryoViewModel: DokuryoViewModel
 
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        notificationsViewModel =
-                ViewModelProvider(this).get(NotificationsViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_notifications, container, false)
-        val textView: TextView = root.findViewById(R.id.text_notifications)
-        notificationsViewModel.text.observe(viewLifecycleOwner, Observer {
+        dokuryoViewModel =
+                ViewModelProvider(this).get(DokuryoViewModel::class.java)
+        val root = inflater.inflate(R.layout.fragment_dokuryo, container, false)
+        val textView: TextView = root.findViewById(R.id.text_Dokuryo)
+        dokuryoViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
         return root
