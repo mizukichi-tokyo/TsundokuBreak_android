@@ -15,9 +15,9 @@ class DokuryoFragment : Fragment() {
     private lateinit var dokuryoViewModel: DokuryoViewModel
 
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         dokuryoViewModel =
                 ViewModelProvider(this).get(DokuryoViewModel::class.java)

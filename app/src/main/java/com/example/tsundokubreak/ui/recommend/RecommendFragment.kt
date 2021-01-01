@@ -15,9 +15,9 @@ class RecommendFragment : Fragment() {
     private lateinit var recommendViewModel: RecommendViewModel
 
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         recommendViewModel =
                 ViewModelProvider(this).get(RecommendViewModel::class.java)

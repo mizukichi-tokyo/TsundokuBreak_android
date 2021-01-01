@@ -15,9 +15,9 @@ class TsundokuFragment : Fragment() {
     private lateinit var tsundokuViewModel: TsundokuViewModel
 
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         tsundokuViewModel =
                 ViewModelProvider(this).get(TsundokuViewModel::class.java)
