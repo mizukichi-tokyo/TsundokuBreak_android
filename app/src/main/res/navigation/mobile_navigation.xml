@@ -3,23 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@+id/navigation_recommend">
 
     <fragment
-        android:id="@+id/navigation_home"
-        android:name="com.example.tsundokubreak.ui.home.HomeFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        android:id="@+id/navigation_recommend"
+        android:name="com.example.tsundokubreak.ui.recommend.RecommendFragment"
+        android:label="@string/title_recommend"
+        tools:layout="@layout/fragment_recommend" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.example.tsundokubreak.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:id="@+id/navigation_tsundoku"
+        android:name="com.example.tsundokubreak.ui.tsundoku.TsundokuFragment"
+        android:label="@string/title_tsundoku"
+        tools:layout="@layout/fragment_tsundoku" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.example.tsundokubreak.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:id="@+id/navigation_dokuryo"
+        android:name="com.example.tsundokubreak.ui.dokuryo.DokuryoFragment"
+        android:label="@string/title_dokuryo"
+        tools:layout="@layout/fragment_dokuryo" />
 </navigation>
