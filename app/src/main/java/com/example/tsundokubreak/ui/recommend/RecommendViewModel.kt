@@ -1,13 +1,13 @@
-package com.example.tsundokubreak.ui.home
+package com.example.tsundokubreak.ui.recommend
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class HomeViewModel : ViewModel() {
+class RecommendViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is home Fragment"
+        value = "This is recommend Fragment"
     }
     val text: LiveData<String> = _text
 }

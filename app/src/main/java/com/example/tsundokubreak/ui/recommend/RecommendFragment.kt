@@ -1,4 +1,4 @@
-package com.example.tsundokubreak.ui.home
+package com.example.tsundokubreak.ui.recommend
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,20 +10,20 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.tsundokubreak.R
 
-class HomeFragment : Fragment() {
+class RecommendFragment : Fragment() {
 
-    private lateinit var homeViewModel: HomeViewModel
+    private lateinit var recommendViewModel: RecommendViewModel
 
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        homeViewModel =
-                ViewModelProvider(this).get(HomeViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_home, container, false)
-        val textView: TextView = root.findViewById(R.id.text_home)
-        homeViewModel.text.observe(viewLifecycleOwner, Observer {
+        recommendViewModel =
+                ViewModelProvider(this).get(RecommendViewModel::class.java)
+        val root = inflater.inflate(R.layout.fragment_recommend, container, false)
+        val textView: TextView = root.findViewById(R.id.text_recommend)
+        recommendViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
         return root
