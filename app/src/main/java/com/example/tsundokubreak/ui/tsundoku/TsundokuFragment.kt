@@ -5,10 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tsundokubreak.R
+import com.example.tsundokubreak.databinding.FragmentTsundokuBinding
 
 class TsundokuFragment : Fragment() {
 
@@ -18,14 +22,15 @@ class TsundokuFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        tsundokuViewModel =
-                ViewModelProvider(this).get(TsundokuViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_tsundoku, container, false)
-        val textView: TextView = root.findViewById(R.id.text_tsundoku)
-        tsundokuViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
-        return root
-    }
+    ): View = FragmentTsundokuBinding.inflate(inflater, container, false).bindLifecycleOwner(viewLifecycleOwner) {
+
+            }
 }
+
+fun <T : ViewDataBinding>T.bindLifecycleOwner(
+        lifecycleOwner: LifecycleOwner,
+        bind: (T) -> Unit
+): View = this.also {
+    it.lifecycleOwner = lifecycleOwner
+    bind(it)
+}.root
