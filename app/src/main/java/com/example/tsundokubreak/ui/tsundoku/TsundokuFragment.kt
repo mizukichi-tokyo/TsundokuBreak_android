@@ -12,6 +12,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tsundokubreak.R
+import com.example.tsundokubreak.bindLifecycleOwner
 import com.example.tsundokubreak.databinding.FragmentTsundokuBinding
 
 class TsundokuFragment : Fragment() {
@@ -26,11 +27,3 @@ class TsundokuFragment : Fragment() {
 
             }
 }
-
-fun <T : ViewDataBinding>T.bindLifecycleOwner(
-        lifecycleOwner: LifecycleOwner,
-        bind: (T) -> Unit
-): View = this.also {
-    it.lifecycleOwner = lifecycleOwner
-    bind(it)
-}.root
