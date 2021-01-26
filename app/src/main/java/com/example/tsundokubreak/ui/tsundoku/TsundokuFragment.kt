@@ -39,12 +39,12 @@ class TsundokuFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View = FragmentTsundokuBinding.inflate(inflater, container, false).bindLifecycleOwner(viewLifecycleOwner) {
         it.recyclerView.apply {
-            adapter = BillingItemListAdapter()
+            adapter = PokemonItemListAdapter()
             layoutManager = LinearLayoutManager(context)
         }
     }
 
-    private inner class BillingItemListAdapter :
+    private inner class PokemonItemListAdapter :
             DataBindingAdapter<ItemRecyclerViewBinding>(viewLifecycleOwner) {
 
         override fun onCreateViewDataBinding(
