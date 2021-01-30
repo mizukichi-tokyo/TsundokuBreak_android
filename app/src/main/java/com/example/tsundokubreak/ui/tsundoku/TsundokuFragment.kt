@@ -37,7 +37,8 @@ class TsundokuFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View = FragmentTsundokuBinding.inflate(inflater, container, false).bindLifecycleOwner(viewLifecycleOwner) {
+    ): View = FragmentTsundokuBinding.inflate(inflater, container, false)
+        .bindLifecycleOwner(viewLifecycleOwner) {
         it.recyclerView.apply {
             adapter = PokemonItemListAdapter()
             layoutManager = LinearLayoutManager(context)
