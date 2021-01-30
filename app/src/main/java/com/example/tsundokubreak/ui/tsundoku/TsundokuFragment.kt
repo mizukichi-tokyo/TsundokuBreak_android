@@ -48,9 +48,9 @@ class TsundokuFragment : Fragment() {
             DataBindingAdapter<ItemRecyclerViewBinding>(viewLifecycleOwner) {
 
         override fun onCreateViewDataBinding(
-                layoutInflater: LayoutInflater,
-                parent: ViewGroup,
-                viewType: Int
+            layoutInflater: LayoutInflater,
+            parent: ViewGroup,
+            viewType: Int
         ): ItemRecyclerViewBinding = ItemRecyclerViewBinding.inflate(layoutInflater, parent, false)
 
         override fun onBindViewDataBinding(binding: ItemRecyclerViewBinding, position: Int) {
@@ -63,5 +63,4 @@ class TsundokuFragment : Fragment() {
 
         override fun getItemCount(): Int = pokemonList.size ?: 0
     }
-
 }

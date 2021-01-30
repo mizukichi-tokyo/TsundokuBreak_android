@@ -4,7 +4,7 @@ import android.view.View
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.LifecycleOwner
 
-fun <T : ViewDataBinding>T.bindLifecycleOwner(
+fun <T : ViewDataBinding> T.bindLifecycleOwner(
     lifecycleOwner: LifecycleOwner,
     bind: (T) -> Unit
 ): View = this.also {
