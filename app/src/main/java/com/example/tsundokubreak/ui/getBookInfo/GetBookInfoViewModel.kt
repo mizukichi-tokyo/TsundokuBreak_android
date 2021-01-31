@@ -1,4 +1,4 @@
-package com.example.tsundokubreak.ui
+package com.example.tsundokubreak.ui.getBookInfo
 
 import androidx.lifecycle.ViewModel
 

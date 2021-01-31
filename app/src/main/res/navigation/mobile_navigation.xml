@@ -29,7 +29,7 @@
 
     <fragment
         android:id="@+id/navigation_getBookInfo"
-        android:name="com.example.tsundokubreak.ui.GetBookInfoFragment"
+        android:name="com.example.tsundokubreak.ui.getBookInfo.GetBookInfoFragment"
         android:label="@string/title_get_book_info"
         tools:layout="@layout/fragment_get_book_info" />
 </navigation>
