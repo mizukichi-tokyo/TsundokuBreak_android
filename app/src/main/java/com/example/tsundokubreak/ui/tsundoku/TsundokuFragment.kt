@@ -5,7 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.tsundokubreak.R
 import com.example.tsundokubreak.bindLifecycleOwner
 import com.example.tsundokubreak.databinding.FragmentTsundokuBinding
 import com.example.tsundokubreak.databinding.ItemRecyclerViewBinding
@@ -39,10 +41,13 @@ class TsundokuFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View = FragmentTsundokuBinding.inflate(inflater, container, false)
         .bindLifecycleOwner(viewLifecycleOwner) {
-        it.recyclerView.apply {
-            adapter = PokemonItemListAdapter()
-            layoutManager = LinearLayoutManager(context)
-        }
+            it.recyclerView.apply {
+                adapter = PokemonItemListAdapter()
+                layoutManager = LinearLayoutManager(context)
+            }
+            it.fab.setOnClickListener {
+                findNavController().navigate(R.id.action_tsundoku_to_getBookInfo)
+            }
     }
 
     private inner class PokemonItemListAdapter :

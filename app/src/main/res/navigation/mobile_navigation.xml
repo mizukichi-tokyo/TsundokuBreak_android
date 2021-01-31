@@ -15,11 +15,21 @@
         android:id="@+id/navigation_tsundoku"
         android:name="com.example.tsundokubreak.ui.tsundoku.TsundokuFragment"
         android:label="@string/title_tsundoku"
-        tools:layout="@layout/fragment_tsundoku" />
+        tools:layout="@layout/fragment_tsundoku" >
+        <action
+            android:id="@+id/action_tsundoku_to_getBookInfo"
+            app:destination="@id/navigation_getBookInfo" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_dokuryo"
         android:name="com.example.tsundokubreak.ui.dokuryo.DokuryoFragment"
         android:label="@string/title_dokuryo"
         tools:layout="@layout/fragment_dokuryo" />
+
+    <fragment
+        android:id="@+id/navigation_getBookInfo"
+        android:name="com.example.tsundokubreak.ui.getBookInfo.GetBookInfoFragment"
+        android:label="@string/title_get_book_info"
+        tools:layout="@layout/fragment_get_book_info" />
 </navigation>
