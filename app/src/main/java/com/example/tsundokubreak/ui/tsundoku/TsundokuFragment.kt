@@ -45,7 +45,7 @@ class TsundokuFragment : Fragment() {
                 adapter = PokemonItemListAdapter()
                 layoutManager = LinearLayoutManager(context)
             }
-            it.fab.setOnClickListener{
+            it.fab.setOnClickListener {
                 findNavController().navigate(R.id.action_tsundoku_to_getBookInfo)
             }
     }
