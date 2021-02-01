@@ -1,15 +1,18 @@
 package com.example.tsundokubreak.ui.dokuryo
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.tsundokubreak.R
 import com.example.tsundokubreak.bindLifecycleOwner
 import com.example.tsundokubreak.databinding.FragmentDokuryoBinding
 import com.example.tsundokubreak.databinding.ItemRecyclerViewBinding
-import com.example.tsundokubreak.extensions.DataBindingAdapter
 
 class DokuryoFragment : Fragment() {
 
@@ -34,34 +37,35 @@ class DokuryoFragment : Fragment() {
     )
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater,
+            container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View = FragmentDokuryoBinding.inflate(inflater, container, false)
-        .bindLifecycleOwner(viewLifecycleOwner) {
-            it.recyclerView.apply {
-                adapter = PokemonItemListAdapter()
-                layoutManager = LinearLayoutManager(context)
+            .bindLifecycleOwner(viewLifecycleOwner) {
+                it.recyclerView.apply {
+                    adapter = PokemonItemListAdapter(context, pokemonList)
+                    layoutManager = LinearLayoutManager(context)
+                }
             }
+
+    class PokemonItemListAdapter(context: Context, val list: List<String>) : RecyclerView.Adapter<MyViewHolder>() {
+        private val layoutInflater = LayoutInflater.from(context)
+
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder
+        {
+            val binding: ItemRecyclerViewBinding = DataBindingUtil.inflate(layoutInflater, R.layout.item_recycler_view, parent, false)
+            return MyViewHolder(binding)
         }
 
-    private inner class PokemonItemListAdapter :
-        DataBindingAdapter<ItemRecyclerViewBinding>(viewLifecycleOwner) {
-
-        override fun onCreateViewDataBinding(
-            layoutInflater: LayoutInflater,
-            parent: ViewGroup,
-            viewType: Int
-        ): ItemRecyclerViewBinding = ItemRecyclerViewBinding.inflate(layoutInflater, parent, false)
-
-        override fun onBindViewDataBinding(binding: ItemRecyclerViewBinding, position: Int) {
-            binding.also {
-
+        override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+            holder.binding.let{
                 it.positionText = position.toString()
-                it.pokemonText = pokemonList[position]
+                it.pokemonText = list[position]
             }
         }
 
-        override fun getItemCount(): Int = pokemonList.size ?: 0
+        override fun getItemCount(): Int = list.size
     }
+
+    class MyViewHolder(val binding: ItemRecyclerViewBinding): RecyclerView.ViewHolder(binding.root)
 }
