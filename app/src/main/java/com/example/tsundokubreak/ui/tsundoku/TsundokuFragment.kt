@@ -15,8 +15,6 @@ import com.example.tsundokubreak.R
 import com.example.tsundokubreak.bindLifecycleOwner
 import com.example.tsundokubreak.databinding.FragmentTsundokuBinding
 import com.example.tsundokubreak.databinding.ItemRecyclerViewBinding
-import com.example.tsundokubreak.extensions.BindingViewHolder
-import com.example.tsundokubreak.extensions.DataBindingAdapter
 
 class TsundokuFragment : Fragment() {
 
