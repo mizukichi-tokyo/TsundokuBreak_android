@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -56,14 +55,13 @@ class TsundokuFragment : Fragment() {
     class PokemonItemListAdapter(context: Context, val list: List<String>) : RecyclerView.Adapter<MyViewHolder>() {
         private val layoutInflater = LayoutInflater.from(context)
 
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder
-        {
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
             val binding: ItemRecyclerViewBinding = DataBindingUtil.inflate(layoutInflater, R.layout.item_recycler_view, parent, false)
             return MyViewHolder(binding)
         }
 
         override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-            holder.binding.let{
+            holder.binding.let {
                 it.positionText = position.toString()
                 it.pokemonText = list[position]
             }
@@ -72,5 +70,5 @@ class TsundokuFragment : Fragment() {
         override fun getItemCount(): Int = list.size
     }
 
-    class MyViewHolder(val binding: ItemRecyclerViewBinding): RecyclerView.ViewHolder(binding.root)
+    class MyViewHolder(val binding: ItemRecyclerViewBinding) : RecyclerView.ViewHolder(binding.root)
 }

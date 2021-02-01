@@ -37,9 +37,9 @@ class DokuryoFragment : Fragment() {
     )
 
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View = FragmentDokuryoBinding.inflate(inflater, container, false)
             .bindLifecycleOwner(viewLifecycleOwner) {
                 it.recyclerView.apply {
@@ -51,14 +51,13 @@ class DokuryoFragment : Fragment() {
     class PokemonItemListAdapter(context: Context, val list: List<String>) : RecyclerView.Adapter<MyViewHolder>() {
         private val layoutInflater = LayoutInflater.from(context)
 
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder
-        {
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
             val binding: ItemRecyclerViewBinding = DataBindingUtil.inflate(layoutInflater, R.layout.item_recycler_view, parent, false)
             return MyViewHolder(binding)
         }
 
         override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-            holder.binding.let{
+            holder.binding.let {
                 it.positionText = position.toString()
                 it.pokemonText = list[position]
             }
@@ -67,5 +66,5 @@ class DokuryoFragment : Fragment() {
         override fun getItemCount(): Int = list.size
     }
 
-    class MyViewHolder(val binding: ItemRecyclerViewBinding): RecyclerView.ViewHolder(binding.root)
+    class MyViewHolder(val binding: ItemRecyclerViewBinding) : RecyclerView.ViewHolder(binding.root)
 }
