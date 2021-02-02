@@ -47,7 +47,7 @@ class TsundokuFragment : Fragment() {
                 val pokemonAdapter = PokemonItemListAdapter(context, pokemonList)
 
                 pokemonAdapter.setOnBookCellClickListener(
-                    object : PokemonItemListAdapter.OnBookCellClickListener{
+                    object : PokemonItemListAdapter.OnBookCellClickListener {
                         override fun onItemClick(position: Int) {
                             findNavController().navigate(R.id.action_tsundoku_to_bookDetail)
                         }
@@ -66,8 +66,8 @@ class TsundokuFragment : Fragment() {
 
         private lateinit var listener: OnBookCellClickListener
 
-        interface  OnBookCellClickListener {
-            fun onItemClick(position:Int)
+        interface OnBookCellClickListener {
+            fun onItemClick(position: Int)
         }
 
         fun setOnBookCellClickListener(listener: OnBookCellClickListener) {
@@ -76,8 +76,8 @@ class TsundokuFragment : Fragment() {
 
         private val layoutInflater = LayoutInflater.from(context)
 
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder
-        = MyViewHolder(
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder =
+        MyViewHolder(
                 DataBindingUtil.inflate(layoutInflater, R.layout.item_recycler_view, parent, false)
         )
 
@@ -92,7 +92,6 @@ class TsundokuFragment : Fragment() {
         }
 
         override fun getItemCount(): Int = list.size
-
     }
 
     class MyViewHolder(val binding: ItemRecyclerViewBinding) : RecyclerView.ViewHolder(binding.root)

@@ -1,11 +1,11 @@
 package com.example.tsundokubreak.ui.tsundokuBookDetail
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.example.tsundokubreak.R
 
 class TsundokuBookDetailFragment : Fragment() {
@@ -16,8 +16,11 @@ class TsundokuBookDetailFragment : Fragment() {
 
     private lateinit var viewModelTsundoku: TsundokuBookDetailViewModel
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         return inflater.inflate(R.layout.fragment_tsundoku_book_detail, container, false)
     }
 
@@ -26,5 +29,4 @@ class TsundokuBookDetailFragment : Fragment() {
         viewModelTsundoku = ViewModelProvider(this).get(TsundokuBookDetailViewModel::class.java)
         // TODO: Use the ViewModel
     }
-
 }
