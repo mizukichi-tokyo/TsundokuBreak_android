@@ -19,7 +19,6 @@ class TsundokuFragment : Fragment() {
 
     private lateinit var tsundokuViewModel: TsundokuViewModel
 
-
     val pokemonList = listOf(
             "ピカチュウ",
             "カイリュー",

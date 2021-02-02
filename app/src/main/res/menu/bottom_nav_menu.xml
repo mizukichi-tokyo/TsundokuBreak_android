@@ -15,5 +15,5 @@
         android:id="@+id/navigation_dokuryo"
         android:icon="@drawable/ic_dokuryo_black_24dp"
         android:title="@string/title_dokuryo" />
-d
+
 </menu>
