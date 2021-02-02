@@ -1,4 +1,4 @@
-package com.example.tsundokubreak.ui.bookDetail
+package com.example.tsundokubreak.ui.tsundokuBookDetail
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -8,22 +8,22 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.tsundokubreak.R
 
-class BookDetailFragment : Fragment() {
+class TsundokuBookDetailFragment : Fragment() {
 
     companion object {
-        fun newInstance() = BookDetailFragment()
+        fun newInstance() = TsundokuBookDetailFragment()
     }
 
-    private lateinit var viewModel: BookDetailViewModel
+    private lateinit var viewModelTsundoku: TsundokuBookDetailViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_book_detail, container, false)
+        return inflater.inflate(R.layout.fragment_tsundoku_book_detail, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(BookDetailViewModel::class.java)
+        viewModelTsundoku = ViewModelProvider(this).get(TsundokuBookDetailViewModel::class.java)
         // TODO: Use the ViewModel
     }
 
