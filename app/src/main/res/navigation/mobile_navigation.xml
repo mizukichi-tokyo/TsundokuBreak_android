@@ -23,6 +23,13 @@
             app:popEnterAnim="@anim/nav_up_pop_enter_anim"
             app:popExitAnim="@anim/nav_up_pop_exit_anim"
             app:destination="@id/navigation_getBookInfo" />
+        <action
+            android:id="@+id/action_tsundoku_to_bookDetail"
+            app:enterAnim="@anim/nav_twitter_enter_anim"
+            app:exitAnim="@anim/nav_twitter_exit_anim"
+            app:popEnterAnim="@anim/nav_twitter_pop_enter_anim"
+            app:popExitAnim="@anim/nav_twitter_pop_exit_anim"
+            app:destination="@id/navigation_tsundokuBookDetail" />
     </fragment>
 
     <fragment
@@ -36,4 +43,10 @@
         android:name="com.example.tsundokubreak.ui.getBookInfo.GetBookInfoFragment"
         android:label="@string/title_get_book_info"
         tools:layout="@layout/fragment_get_book_info" />
+
+    <fragment
+        android:id="@+id/navigation_tsundokuBookDetail"
+        android:name="com.example.tsundokubreak.ui.tsundokuBookDetail.TsundokuBookDetailFragment"
+        android:label="@string/title_tsundoku_book_detail"
+        tools:layout="@layout/fragment_tsundoku_book_detail" />
 </navigation>

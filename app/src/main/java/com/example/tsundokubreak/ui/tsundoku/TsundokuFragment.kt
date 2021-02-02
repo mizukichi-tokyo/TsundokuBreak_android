@@ -1,17 +1,19 @@
 package com.example.tsundokubreak.ui.tsundoku
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.tsundokubreak.R
 import com.example.tsundokubreak.bindLifecycleOwner
 import com.example.tsundokubreak.databinding.FragmentTsundokuBinding
 import com.example.tsundokubreak.databinding.ItemRecyclerViewBinding
-import com.example.tsundokubreak.extensions.DataBindingAdapter
 
 class TsundokuFragment : Fragment() {
 
@@ -42,7 +44,17 @@ class TsundokuFragment : Fragment() {
     ): View = FragmentTsundokuBinding.inflate(inflater, container, false)
         .bindLifecycleOwner(viewLifecycleOwner) {
             it.recyclerView.apply {
-                adapter = PokemonItemListAdapter()
+                val pokemonAdapter = PokemonItemListAdapter(context, pokemonList)
+
+                pokemonAdapter.setOnBookCellClickListener(
+                    object : PokemonItemListAdapter.OnBookCellClickListener {
+                        override fun onItemClick(position: Int) {
+                            findNavController().navigate(R.id.action_tsundoku_to_bookDetail)
+                        }
+                    }
+                )
+
+                adapter = pokemonAdapter
                 layoutManager = LinearLayoutManager(context)
             }
             it.fab.setOnClickListener {
@@ -50,23 +62,37 @@ class TsundokuFragment : Fragment() {
             }
     }
 
-    private inner class PokemonItemListAdapter :
-            DataBindingAdapter<ItemRecyclerViewBinding>(viewLifecycleOwner) {
+    class PokemonItemListAdapter(context: Context, val list: List<String>) : RecyclerView.Adapter<MyViewHolder>() {
 
-        override fun onCreateViewDataBinding(
-            layoutInflater: LayoutInflater,
-            parent: ViewGroup,
-            viewType: Int
-        ): ItemRecyclerViewBinding = ItemRecyclerViewBinding.inflate(layoutInflater, parent, false)
+        private lateinit var listener: OnBookCellClickListener
 
-        override fun onBindViewDataBinding(binding: ItemRecyclerViewBinding, position: Int) {
-            binding.also {
+        interface OnBookCellClickListener {
+            fun onItemClick(position: Int)
+        }
 
+        fun setOnBookCellClickListener(listener: OnBookCellClickListener) {
+            this.listener = listener
+        }
+
+        private val layoutInflater = LayoutInflater.from(context)
+
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder =
+        MyViewHolder(
+                DataBindingUtil.inflate(layoutInflater, R.layout.item_recycler_view, parent, false)
+        )
+
+        override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+            holder.binding.let {
                 it.positionText = position.toString()
-                it.pokemonText = pokemonList[position]
+                it.pokemonText = list[position]
+            }
+            holder.itemView.setOnClickListener {
+                listener.onItemClick(position)
             }
         }
 
-        override fun getItemCount(): Int = pokemonList.size ?: 0
+        override fun getItemCount(): Int = list.size
     }
+
+    class MyViewHolder(val binding: ItemRecyclerViewBinding) : RecyclerView.ViewHolder(binding.root)
 }
