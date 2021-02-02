@@ -3,13 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_recommend">
+    app:startDestination="@+id/navigation_tsundoku">
 
-    <fragment
-        android:id="@+id/navigation_recommend"
-        android:name="com.example.tsundokubreak.ui.recommend.RecommendFragment"
-        android:label="@string/title_recommend"
-        tools:layout="@layout/fragment_recommend" />
+<!--    <fragment-->
+<!--        android:id="@+id/navigation_recommend"-->
+<!--        android:name="com.example.tsundokubreak.ui.recommend.RecommendFragment"-->
+<!--        android:label="@string/title_recommend"-->
+<!--        tools:layout="@layout/fragment_recommend" />-->
 
     <fragment
         android:id="@+id/navigation_tsundoku"
