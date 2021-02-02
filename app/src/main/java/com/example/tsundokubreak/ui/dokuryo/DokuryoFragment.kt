@@ -13,6 +13,7 @@ import com.example.tsundokubreak.R
 import com.example.tsundokubreak.bindLifecycleOwner
 import com.example.tsundokubreak.databinding.FragmentDokuryoBinding
 import com.example.tsundokubreak.databinding.ItemRecyclerViewBinding
+import com.example.tsundokubreak.ui.tsundoku.TsundokuFragment
 
 class DokuryoFragment : Fragment() {
 
@@ -51,10 +52,10 @@ class DokuryoFragment : Fragment() {
     class PokemonItemListAdapter(context: Context, val list: List<String>) : RecyclerView.Adapter<MyViewHolder>() {
         private val layoutInflater = LayoutInflater.from(context)
 
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-            val binding: ItemRecyclerViewBinding = DataBindingUtil.inflate(layoutInflater, R.layout.item_recycler_view, parent, false)
-            return MyViewHolder(binding)
-        }
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder
+        = MyViewHolder(
+                DataBindingUtil.inflate(layoutInflater, R.layout.item_recycler_view, parent, false)
+        )
 
         override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
             holder.binding.let {
