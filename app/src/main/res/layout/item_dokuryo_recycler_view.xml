@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="positionText"
+            type="String" />
+        <variable
+            name="pokemonText"
+            type="String" />
+
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:focusable="true"
+        android:clickable="true"
+        android:layout_height="wrap_content"
+        android:foreground="?android:attr/selectableItemBackground">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="16dp"
+            android:paddingEnd="32dp">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:src="@drawable/sample"
+                android:scaleType="fitCenter"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_width="60dp"
+                android:layout_height="90dp"
+                />
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toRightOf="@+id/imageView"
+                app:layout_constraintTop_toTopOf="parent"
+                android:text="@{pokemonText}"
+                android:layout_marginStart="10dp"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/author"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toRightOf="@+id/imageView"
+                app:layout_constraintTop_toBottomOf="@+id/title"
+                android:text="@{pokemonText}"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                android:textSize="20sp" />
+
+            <com.sackcentury.shinebuttonlib.ShineButton
+                android:id="@+id/image_button"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                app:layout_constraintTop_toBottomOf="@+id/title"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_centerInParent="true"
+                android:src="@android:color/darker_gray"
+                app:btn_color="@android:color/darker_gray"
+                app:btn_fill_color="@android:color/holo_red_dark"
+                app:allow_random_color="false"
+                app:siShape="@raw/trash_box"/>
+
+            <TextView
+                android:id="@+id/pages"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toRightOf="@+id/imageView"
+                app:layout_constraintTop_toBottomOf="@+id/author"
+                android:text="@{pokemonText}"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                android:textSize="20sp" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </FrameLayout>
+
+</layout>

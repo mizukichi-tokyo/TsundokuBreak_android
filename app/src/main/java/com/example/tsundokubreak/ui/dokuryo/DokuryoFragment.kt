@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.tsundokubreak.R
 import com.example.tsundokubreak.bindLifecycleOwner
 import com.example.tsundokubreak.databinding.FragmentDokuryoBinding
-import com.example.tsundokubreak.databinding.ItemRecyclerViewBinding
+import com.example.tsundokubreak.databinding.ItemDokuryoRecyclerViewBinding
 
 class DokuryoFragment : Fragment() {
 
@@ -53,7 +53,7 @@ class DokuryoFragment : Fragment() {
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder =
         MyViewHolder(
-                DataBindingUtil.inflate(layoutInflater, R.layout.item_recycler_view, parent, false)
+                DataBindingUtil.inflate(layoutInflater, R.layout.item_dokuryo_recycler_view, parent, false)
         )
 
         override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
@@ -66,5 +66,5 @@ class DokuryoFragment : Fragment() {
         override fun getItemCount(): Int = list.size
     }
 
-    class MyViewHolder(val binding: ItemRecyclerViewBinding) : RecyclerView.ViewHolder(binding.root)
+    class MyViewHolder(val binding: ItemDokuryoRecyclerViewBinding) : RecyclerView.ViewHolder(binding.root)
 }
