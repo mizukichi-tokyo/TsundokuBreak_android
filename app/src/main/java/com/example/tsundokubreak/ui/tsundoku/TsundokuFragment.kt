@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.tsundokubreak.R
 import com.example.tsundokubreak.bindLifecycleOwner
 import com.example.tsundokubreak.databinding.FragmentTsundokuBinding
-import com.example.tsundokubreak.databinding.ItemRecyclerViewBinding
+import com.example.tsundokubreak.databinding.ItemTsundokuRecyclerViewBinding
 
 class TsundokuFragment : Fragment() {
 
@@ -78,7 +78,7 @@ class TsundokuFragment : Fragment() {
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder =
         MyViewHolder(
-                DataBindingUtil.inflate(layoutInflater, R.layout.item_recycler_view, parent, false)
+                DataBindingUtil.inflate(layoutInflater, R.layout.item_tsundoku_recycler_view, parent, false)
         )
 
         override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
@@ -94,5 +94,5 @@ class TsundokuFragment : Fragment() {
         override fun getItemCount(): Int = list.size
     }
 
-    class MyViewHolder(val binding: ItemRecyclerViewBinding) : RecyclerView.ViewHolder(binding.root)
+    class MyViewHolder(val binding: ItemTsundokuRecyclerViewBinding) : RecyclerView.ViewHolder(binding.root)
 }
