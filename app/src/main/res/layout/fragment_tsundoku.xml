@@ -42,7 +42,7 @@
             android:layout_margin="16dp"
             android:src="@drawable/ic_add_white_18dp"
             app:tint="@android:color/white"
-            app:backgroundTint="@color/orange"
+            app:backgroundTint="@color/magenta"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
