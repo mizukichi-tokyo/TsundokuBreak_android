@@ -2,6 +2,8 @@ package com.example.tsundokubreak.ui.tsundoku
 
 import android.content.Context
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -49,7 +51,7 @@ class TsundokuFragment : Fragment() {
                 pokemonAdapter.setOnBookCellClickListener(
                     object : PokemonItemListAdapter.OnBookCellClickListener {
                         override fun onItemClick(position: Int) {
-                            findNavController().navigate(R.id.action_tsundoku_to_bookDetail)
+                            transitionDelay()
                         }
                     }
                 )
@@ -60,6 +62,12 @@ class TsundokuFragment : Fragment() {
             it.fab.setOnClickListener {
                 findNavController().navigate(R.id.action_tsundoku_to_getBookInfo)
             }
+    }
+
+    private fun transitionDelay(){
+        Handler(Looper.getMainLooper()).postDelayed({
+            findNavController().navigate(R.id.action_tsundoku_to_bookDetail)
+        }, 1000)
     }
 
     class PokemonItemListAdapter(context: Context, val list: List<String>) : RecyclerView.Adapter<MyViewHolder>() {
