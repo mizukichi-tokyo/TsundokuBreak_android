@@ -11,7 +11,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tsundokubreak.R
 import com.example.tsundokubreak.bindLifecycleOwner
-import com.example.tsundokubreak.databinding.*
+import com.example.tsundokubreak.databinding.FragmentDokuryoBinding
+import com.example.tsundokubreak.databinding.ItemDokuryoRecyclerViewBinding
 
 class DokuryoFragment : Fragment() {
 
