@@ -85,9 +85,9 @@ class TsundokuFragment : Fragment() {
             holder.binding.let {
                 it.positionText = position.toString()
                 it.pokemonText = list[position]
-            }
-            holder.itemView.setOnClickListener {
-                listener.onItemClick(position)
+                it.imageButton.setOnClickListener{
+                    listener.onItemClick(position)
+                }
             }
         }
 
