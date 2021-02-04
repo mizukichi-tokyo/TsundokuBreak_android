@@ -34,6 +34,8 @@ xmlns:tools="http://schemas.android.com/tools">
             android:maxLength="13"
             android:digits="0123456789"
             android:hint="9784873115658"
+            android:autofillHints=""
+            tools:targetApi="o"
             />
 
 
