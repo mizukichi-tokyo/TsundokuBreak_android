@@ -10,9 +10,27 @@ xmlns:tools="http://schemas.android.com/tools">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/lightGray"
-        android:padding="16dp"
+        android:background="@color/light_gray"
+        android:padding="25dp"
         android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Title"
+            android:textColor="@color/black"
+            android:text="@string/get_book_info_text" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/ChildTitle"
+            android:inputType="number"
+            android:textColor="@color/black"
+            android:background="@drawable/round_shape_text"
+            android:maxLines="1"
+            android:hint="111111111111"
+            />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -62,25 +80,7 @@ xmlns:tools="http://schemas.android.com/tools">
                 android:layout_marginStart="10dp"
                 android:textSize="20sp" />
 
-
-
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:background="@color/white"
-            android:text="@string/get_book_info_text" />
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="number"
-            android:textColor="@color/black"
-            android:background="@color/white"
-            android:text="111111111111"
-            />
 
     </LinearLayout>
 
