@@ -7,6 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.tsundokubreak.R
+import com.example.tsundokubreak.bindLifecycleOwner
+import com.example.tsundokubreak.databinding.FragmentGetBookInfoBinding
+import com.example.tsundokubreak.databinding.FragmentTsundokuBinding
 
 class GetBookInfoFragment : Fragment() {
 
@@ -20,13 +23,9 @@ class GetBookInfoFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_get_book_info, container, false)
+    ): View = FragmentGetBookInfoBinding.inflate(inflater, container, false)
+            .bindLifecycleOwner(viewLifecycleOwner) {
+
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(GetBookInfoViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
 }
