@@ -5,11 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
-import com.example.tsundokubreak.R
 import com.example.tsundokubreak.bindLifecycleOwner
 import com.example.tsundokubreak.databinding.FragmentGetBookInfoBinding
-import com.example.tsundokubreak.databinding.FragmentTsundokuBinding
 
 class GetBookInfoFragment : Fragment() {
 
@@ -25,7 +22,5 @@ class GetBookInfoFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View = FragmentGetBookInfoBinding.inflate(inflater, container, false)
             .bindLifecycleOwner(viewLifecycleOwner) {
-
     }
-
 }
