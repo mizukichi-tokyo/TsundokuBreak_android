@@ -67,7 +67,7 @@ class TsundokuFragment : Fragment() {
             }
     }
 
-    private fun transitionDelay(){
+    private fun transitionDelay() {
         Handler(Looper.getMainLooper()).postDelayed({
             findNavController().navigate(R.id.action_tsundoku_to_bookDetail)
         }, 1000)
