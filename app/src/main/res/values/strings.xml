@@ -6,4 +6,5 @@
     <string name="title_get_book_info">書籍情報取得</string>
     <string name="get_book_info_text">ISBNコードを入力して下さい</string>
     <string name="title_tsundoku_book_detail">積読進捗</string>
+    <string name="register_tsundoku">積読進捗</string>
 </resources>
