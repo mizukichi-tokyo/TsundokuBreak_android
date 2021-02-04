@@ -53,7 +53,6 @@ class TsundokuFragment : Fragment() {
                 pokemonAdapter.setOnBookCellClickListener(
                     object : PokemonItemListAdapter.OnBookCellClickListener {
                         override fun onItemClick(position: Int) {
-                            activity?.window?.addFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
                             transitionDelay()
                         }
                     }
@@ -68,6 +67,7 @@ class TsundokuFragment : Fragment() {
     }
 
     private fun transitionDelay() {
+        activity?.window?.addFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
         Handler(Looper.getMainLooper()).postDelayed({
             findNavController().navigate(R.id.action_tsundoku_to_bookDetail)
         }, 1000)
