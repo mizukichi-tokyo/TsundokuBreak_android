@@ -7,6 +7,7 @@ import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -46,11 +47,13 @@ class TsundokuFragment : Fragment() {
     ): View = FragmentTsundokuBinding.inflate(inflater, container, false)
         .bindLifecycleOwner(viewLifecycleOwner) {
             it.recyclerView.apply {
+                activity?.window?.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
                 val pokemonAdapter = PokemonItemListAdapter(context, pokemonList)
 
                 pokemonAdapter.setOnBookCellClickListener(
                     object : PokemonItemListAdapter.OnBookCellClickListener {
                         override fun onItemClick(position: Int) {
+                            activity?.window?.addFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
                             transitionDelay()
                         }
                     }
