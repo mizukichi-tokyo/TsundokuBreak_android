@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +14,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.awesomedialog.*
 import com.example.tsundokubreak.R
 import com.example.tsundokubreak.bindLifecycleOwner
 import com.example.tsundokubreak.databinding.FragmentTsundokuBinding
@@ -64,13 +66,37 @@ class TsundokuFragment : Fragment() {
             it.fab.setOnClickListener {
                 findNavController().navigate(R.id.action_tsundoku_to_getBookInfo)
             }
-    }
+
+            showDokuryoDialog()
+
+        }
 
     private fun transitionDelay() {
         activity?.window?.addFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
         Handler(Looper.getMainLooper()).postDelayed({
             findNavController().navigate(R.id.action_tsundoku_to_bookDetail)
         }, 1000)
+    }
+
+    private fun showDokuryoDialog(){
+        AwesomeDialog.build(activity!!)
+            .title("読了おめでとう！")
+            .body("読了一覧へ追加移しますか？")
+            .position(AwesomeDialog.POSITIONS.CENTER)
+            .icon(R.raw.check_orange)
+            .onPositive(
+                "OK",
+                R.color.orange
+            ) {
+                Log.d("TAG", "positive ")
+            }
+            .onNegative(
+                "cancel",
+                R.color.gray
+            ) {
+                Log.d("TAG", "negative ")
+            }
+
     }
 
     class PokemonItemListAdapter(context: Context, val list: List<String>) : RecyclerView.Adapter<MyViewHolder>() {
