@@ -1,6 +1,5 @@
 package com.example.tsundokubreak.ui.tsundoku
 
-import adil.dev.lib.materialnumberpicker.dialog.NumberPickerDialog
 import android.content.Context
 import android.os.Bundle
 import android.os.Handler
@@ -10,7 +9,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -57,7 +55,7 @@ class TsundokuFragment : Fragment() {
                 pokemonAdapter.setOnBookCellClickListener(
                     object : PokemonItemListAdapter.OnBookCellClickListener {
                         override fun onItemClick(position: Int) {
-                            transitionDelay()
+                            checkButtonClick()
                         }
                     }
                 )
@@ -68,28 +66,15 @@ class TsundokuFragment : Fragment() {
             it.fab.setOnClickListener {
                 findNavController().navigate(R.id.action_tsundoku_to_getBookInfo)
             }
-
-            showDokuryoDialog()
         }
 
-    private fun transitionDelay() {
+    private fun checkButtonClick() {
         activity?.window?.addFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
         Handler(Looper.getMainLooper()).postDelayed({
-//            findNavController().navigate(R.id.action_tsundoku_to_bookDetail)
-            showReadPagesDialog()
+            showDokuryoDialog()
         }, 1000)
     }
 
-    private fun showReadPagesDialog() {
-        NumberPickerDialog(
-            activity, 0, 150
-        ) { value ->
-            Toast.makeText(activity, "Selected $value", Toast.LENGTH_SHORT).show()
-        }.also {
-            it.show()
-        }
-        activity?.window?.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
-    }
     private fun showDokuryoDialog() {
         AwesomeDialog.build(requireActivity())
             .title("読了おめでとう！")
@@ -108,6 +93,7 @@ class TsundokuFragment : Fragment() {
             ) {
                 Log.d("TAG", "negative ")
             }
+        activity?.window?.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
     }
 
     class PokemonItemListAdapter(context: Context, val list: List<String>) : RecyclerView.Adapter<MyViewHolder>() {
@@ -138,7 +124,7 @@ class TsundokuFragment : Fragment() {
             holder.binding.let {
                 it.positionText = position.toString()
                 it.pokemonText = list[position]
-                it.chartButton.setOnClickListener {
+                it.dokuryoButton.setOnClickListener {
                     listener.onItemClick(position)
                 }
             }
