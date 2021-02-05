@@ -87,6 +87,7 @@
                 android:maxLines="1"
                 android:maxLength="4"
                 android:digits="0123456789"
+                android:autofillHints="0"
                 />
 
             <TextView
