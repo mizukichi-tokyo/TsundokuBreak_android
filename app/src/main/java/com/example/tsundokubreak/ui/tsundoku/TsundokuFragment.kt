@@ -22,7 +22,6 @@ import com.example.tsundokubreak.bindLifecycleOwner
 import com.example.tsundokubreak.databinding.FragmentTsundokuBinding
 import com.example.tsundokubreak.databinding.ItemTsundokuRecyclerViewBinding
 
-
 class TsundokuFragment : Fragment() {
 
     private lateinit var tsundokuViewModel: TsundokuViewModel
@@ -70,24 +69,27 @@ class TsundokuFragment : Fragment() {
                 findNavController().navigate(R.id.action_tsundoku_to_getBookInfo)
             }
 
-//            showDokuryoDialog()
-
-            val dialog = NumberPickerDialog(
-                activity, 0, 150
-            ) { value ->
-                Toast.makeText(activity, "Selected $value", Toast.LENGTH_SHORT).show()
-            }
-            dialog.show()
+            showDokuryoDialog()
         }
 
     private fun transitionDelay() {
         activity?.window?.addFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
         Handler(Looper.getMainLooper()).postDelayed({
 //            findNavController().navigate(R.id.action_tsundoku_to_bookDetail)
-            showDokuryoDialog()
+            showReadPagesDialog()
         }, 1000)
     }
 
+    private fun showReadPagesDialog() {
+        NumberPickerDialog(
+            activity, 0, 150
+        ) { value ->
+            Toast.makeText(activity, "Selected $value", Toast.LENGTH_SHORT).show()
+        }.also {
+            it.show()
+        }
+        activity?.window?.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
+    }
     private fun showDokuryoDialog() {
         AwesomeDialog.build(requireActivity())
             .title("読了おめでとう！")
@@ -106,7 +108,6 @@ class TsundokuFragment : Fragment() {
             ) {
                 Log.d("TAG", "negative ")
             }
-        activity?.window?.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
     }
 
     class PokemonItemListAdapter(context: Context, val list: List<String>) : RecyclerView.Adapter<MyViewHolder>() {
