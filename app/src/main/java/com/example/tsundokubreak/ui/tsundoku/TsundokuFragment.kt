@@ -1,18 +1,22 @@
 package com.example.tsundokubreak.ui.tsundoku
 
+import adil.dev.lib.materialnumberpicker.dialog.NumberPickerDialog
 import android.content.Context
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.awesomedialog.*
 import com.example.tsundokubreak.R
 import com.example.tsundokubreak.bindLifecycleOwner
 import com.example.tsundokubreak.databinding.FragmentTsundokuBinding
@@ -23,21 +27,21 @@ class TsundokuFragment : Fragment() {
     private lateinit var tsundokuViewModel: TsundokuViewModel
 
     val pokemonList = listOf(
-            "ピカチュウ",
-            "カイリュー",
-            "ヤドラン",
-            "ピジョン",
-            "コダック",
-            "コラッタ",
-            "ズバット",
-            "ギャロップ",
-            "サンダース",
-            "メノクラゲ",
-            "パウワウ",
-            "カラカラ",
-            "タマタマ",
-            "ガラガラ",
-            "フシギダネ"
+        "ピカチュウ",
+        "カイリュー",
+        "ヤドラン",
+        "ピジョン",
+        "コダック",
+        "コラッタ",
+        "ズバット",
+        "ギャロップ",
+        "サンダース",
+        "メノクラゲ",
+        "パウワウ",
+        "カラカラ",
+        "タマタマ",
+        "ガラガラ",
+        "フシギダネ"
     )
 
     override fun onCreateView(
@@ -64,13 +68,46 @@ class TsundokuFragment : Fragment() {
             it.fab.setOnClickListener {
                 findNavController().navigate(R.id.action_tsundoku_to_getBookInfo)
             }
-    }
+
+            showDokuryoDialog()
+        }
 
     private fun transitionDelay() {
         activity?.window?.addFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
         Handler(Looper.getMainLooper()).postDelayed({
-            findNavController().navigate(R.id.action_tsundoku_to_bookDetail)
+//            findNavController().navigate(R.id.action_tsundoku_to_bookDetail)
+            showReadPagesDialog()
         }, 1000)
+    }
+
+    private fun showReadPagesDialog() {
+        NumberPickerDialog(
+            activity, 0, 150
+        ) { value ->
+            Toast.makeText(activity, "Selected $value", Toast.LENGTH_SHORT).show()
+        }.also {
+            it.show()
+        }
+        activity?.window?.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
+    }
+    private fun showDokuryoDialog() {
+        AwesomeDialog.build(requireActivity())
+            .title("読了おめでとう！")
+            .body("読了一覧へ追加移しますか？")
+            .position(AwesomeDialog.POSITIONS.CENTER)
+            .icon(R.raw.check_orange)
+            .onPositive(
+                "OK",
+                R.color.orange
+            ) {
+                Log.d("TAG", "positive ")
+            }
+            .onNegative(
+                "cancel",
+                R.color.gray
+            ) {
+                Log.d("TAG", "negative ")
+            }
     }
 
     class PokemonItemListAdapter(context: Context, val list: List<String>) : RecyclerView.Adapter<MyViewHolder>() {
@@ -89,7 +126,12 @@ class TsundokuFragment : Fragment() {
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder =
         MyViewHolder(
-                DataBindingUtil.inflate(layoutInflater, R.layout.item_tsundoku_recycler_view, parent, false)
+            DataBindingUtil.inflate(
+                layoutInflater,
+                R.layout.item_tsundoku_recycler_view,
+                parent,
+                false
+            )
         )
 
         override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
@@ -105,5 +147,7 @@ class TsundokuFragment : Fragment() {
         override fun getItemCount(): Int = list.size
     }
 
-    class MyViewHolder(val binding: ItemTsundokuRecyclerViewBinding) : RecyclerView.ViewHolder(binding.root)
+    class MyViewHolder(val binding: ItemTsundokuRecyclerViewBinding) : RecyclerView.ViewHolder(
+        binding.root
+    )
 }

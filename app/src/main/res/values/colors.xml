@@ -11,5 +11,16 @@
     <color name="cream_white">#FFFCEA</color>
     <color name="orange">#F59A5F</color>
     <color name="magenta">#FD96BB</color>
-    <color name="gray">#D3D3D3</color>　
+    <color name="gray">#D3D3D3</color>
+
+    <!--use these color attributes to customize Material Picker Dialog-->
+
+    <color name="MPD_primaryColor">@color/magenta</color>
+    <color name="MPD_primaryColorLight">@color/magenta</color>
+    <color name="MPD_backGroundColor">#FFF</color>
+    <color name="MPD_pickerItemColorUnSelected">#00FFFFFF</color>
+    <color name="MPD_pickerItemColorSelected">@color/MPD_primaryColor</color>
+    <color name="MPD_pickerItemTextColorUnSelected">#444</color>
+    <color name="MPD_pickerItemTextColorSelected">#bbffffff</color>
+    <color name="MPD_pickerSelectedTextColor">#FFF</color>　
 </resources>
