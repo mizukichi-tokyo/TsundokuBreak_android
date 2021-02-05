@@ -68,7 +68,6 @@ class TsundokuFragment : Fragment() {
             }
 
             showDokuryoDialog()
-
         }
 
     private fun transitionDelay() {
@@ -79,8 +78,8 @@ class TsundokuFragment : Fragment() {
         }, 1000)
     }
 
-    private fun showDokuryoDialog(){
-        AwesomeDialog.build(activity!!)
+    private fun showDokuryoDialog() {
+        AwesomeDialog.build(requireActivity())
             .title("読了おめでとう！")
             .body("読了一覧へ追加移しますか？")
             .position(AwesomeDialog.POSITIONS.CENTER)

@@ -48,7 +48,7 @@ class DokuryoFragment : Fragment() {
                     adapter = PokemonItemListAdapter(context, pokemonList)
                     layoutManager = LinearLayoutManager(context)
                 }
-                AwesomeDialog.build(activity!!)
+                AwesomeDialog.build(requireActivity())
                     .title("本当に削除しますか？")
                     .body("元には戻せません")
                     .position(AwesomeDialog.POSITIONS.CENTER)
@@ -80,7 +80,6 @@ class DokuryoFragment : Fragment() {
                 it.positionText = position.toString()
                 it.pokemonText = list[position]
             }
-
         }
 
         override fun getItemCount(): Int = list.size
