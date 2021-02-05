@@ -74,7 +74,8 @@ class TsundokuFragment : Fragment() {
     private fun transitionDelay() {
         activity?.window?.addFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
         Handler(Looper.getMainLooper()).postDelayed({
-            findNavController().navigate(R.id.action_tsundoku_to_bookDetail)
+//            findNavController().navigate(R.id.action_tsundoku_to_bookDetail)
+            showDokuryoDialog()
         }, 1000)
     }
 
@@ -96,7 +97,7 @@ class TsundokuFragment : Fragment() {
             ) {
                 Log.d("TAG", "negative ")
             }
-
+        activity?.window?.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
     }
 
     class PokemonItemListAdapter(context: Context, val list: List<String>) : RecyclerView.Adapter<MyViewHolder>() {
