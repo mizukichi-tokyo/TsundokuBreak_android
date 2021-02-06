@@ -1,6 +1,8 @@
 package com.example.tsundokubreak
 
+import android.content.Context
 import android.os.Bundle
+import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -23,5 +25,13 @@ class MainActivity : AppCompatActivity() {
         navView.setupWithNavController(navController)
     }
 
-    override fun onSupportNavigateUp(): Boolean = findNavController(R.id.nav_host_fragment).navigateUp()
+    override fun onSupportNavigateUp(): Boolean {
+        val view = currentFocus
+        if (view != null) {
+            val manager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            manager.hideSoftInputFromWindow(view.windowToken, 0)
+        }
+        return findNavController(R.id.nav_host_fragment).navigateUp()
+    }
+
 }
