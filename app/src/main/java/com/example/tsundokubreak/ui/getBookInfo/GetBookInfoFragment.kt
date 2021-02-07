@@ -24,6 +24,5 @@ class GetBookInfoFragment : Fragment() {
             .bindLifecycleOwner(viewLifecycleOwner) {
 //                it.imageUrl="http://books.google.com/books/content?id=RhbBoAEACAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api"
 //                it.imageUrl="afdasfafas"
-
     }
 }
