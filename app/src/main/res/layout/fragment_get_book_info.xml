@@ -7,6 +7,9 @@ xmlns:tools="http://schemas.android.com/tools">
     <variable
         name="tsundokuBook"
         type="com.example.tsundokubreak.domain.entity.bookInfo.TsundokuBook" />
+    <variable
+        name="canRegister"
+        type="Boolean" />
 </data>
 
     <LinearLayout
@@ -118,7 +121,7 @@ xmlns:tools="http://schemas.android.com/tools">
 
         <androidx.appcompat.widget.AppCompatButton
             style="@style/RegisterButton"
-            android:enabled="false"
+            android:enabled="@{canRegister}"
             android:text="@string/register_tsundoku" />
 
     </LinearLayout>
