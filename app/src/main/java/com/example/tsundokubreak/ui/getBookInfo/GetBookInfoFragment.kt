@@ -14,7 +14,7 @@ class GetBookInfoFragment : Fragment() {
         fun newInstance() = GetBookInfoFragment()
     }
 
-    private var viewModel= GetBookInfoViewModel()
+    private var viewModel = GetBookInfoViewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater,
