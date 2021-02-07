@@ -1,7 +1,11 @@
 package com.example.tsundokubreak.domain.entity.bookInfo
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity(tableName = "tsundokuBooks")
 data class TsundokuBook(
-    val id: Int? = 0,
+    @PrimaryKey(autoGenerate = true) val id: Int,
     val title: String? = "",
     val author: String? = "",
     val totalPageCount: Int? = 0,
