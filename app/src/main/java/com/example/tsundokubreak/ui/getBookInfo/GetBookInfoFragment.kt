@@ -14,7 +14,7 @@ class GetBookInfoFragment : Fragment() {
         fun newInstance() = GetBookInfoFragment()
     }
 
-    private lateinit var viewModel: GetBookInfoViewModel
+    private var viewModel = GetBookInfoViewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -22,7 +22,7 @@ class GetBookInfoFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View = FragmentGetBookInfoBinding.inflate(inflater, container, false)
             .bindLifecycleOwner(viewLifecycleOwner) {
-//                it.imageUrl="http://books.google.com/books/content?id=RhbBoAEACAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api"
-//                it.imageUrl="afdasfafas"
+                it.tsundokuBook = viewModel.gotBookInfo.value
+                it.canRegister = viewModel.canRegisterBook
     }
 }
