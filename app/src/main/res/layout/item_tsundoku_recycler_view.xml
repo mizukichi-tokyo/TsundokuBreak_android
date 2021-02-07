@@ -79,6 +79,7 @@
                 app:layout_constraintLeft_toRightOf="@+id/imageView"
                 app:layout_constraintTop_toBottomOf="@+id/author"
                 app:theme="@style/EditTextStyle"
+                android:imeOptions="actionDone"
                 android:gravity="center_vertical"
                 android:text=""
                 android:layout_marginStart="10dp"
