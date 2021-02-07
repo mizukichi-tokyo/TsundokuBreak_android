@@ -6,6 +6,6 @@ import com.example.tsundokubreak.domain.entity.bookInfo.TsundokuBook
 import com.example.tsundokubreak.domain.repository.bookList.TsundokuBookDao
 
 @Database(entities = [TsundokuBook::class], version = 1)
-abstract class AppDatabase : RoomDatabase() {
+abstract class TsundokuBreakAppDatabase : RoomDatabase() {
     abstract fun tsundokuBookDao(): TsundokuBookDao
 }
