@@ -44,6 +44,7 @@ xmlns:tools="http://schemas.android.com/tools">
 
         <ImageView
             android:id="@+id/imageView"
+            android:src="@drawable/no_image"
             app:imageURL="@{imageUrl}"
             android:scaleType="fitCenter"
             android:layout_width="120dp"
