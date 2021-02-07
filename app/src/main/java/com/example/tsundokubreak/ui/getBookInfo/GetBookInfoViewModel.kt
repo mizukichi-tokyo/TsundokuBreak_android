@@ -1,17 +1,20 @@
 package com.example.tsundokubreak.ui.getBookInfo
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.tsundokubreak.domain.entity.bookInfo.TsundokuBook
 
 class GetBookInfoViewModel : ViewModel() {
-    var canRegisterBook: Boolean = false
+    private var _canRegisterBook: MutableLiveData<Boolean> = MutableLiveData(false)
+    var canRegisterBook: LiveData<Boolean> = _canRegisterBook
 
     fun changeRegisterBookBool() {
-        canRegisterBook = true
+        _canRegisterBook = MutableLiveData(true)
     }
 
-    val gotBookInfo: MutableLiveData<TsundokuBook> =
+
+    private val _gotBookInfo: MutableLiveData<TsundokuBook> =
         MutableLiveData(
             TsundokuBook(
                 0,
@@ -21,4 +24,5 @@ class GetBookInfoViewModel : ViewModel() {
                 "",
             )
         )
+    val gotBookInfo:LiveData<TsundokuBook> = _gotBookInfo
 }

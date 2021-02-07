@@ -23,6 +23,6 @@ class GetBookInfoFragment : Fragment() {
     ): View = FragmentGetBookInfoBinding.inflate(inflater, container, false)
             .bindLifecycleOwner(viewLifecycleOwner) {
                 it.tsundokuBook = viewModel.gotBookInfo.value
-                it.canRegister = viewModel.canRegisterBook
+                it.canRegister = viewModel.canRegisterBook.value
     }
 }
