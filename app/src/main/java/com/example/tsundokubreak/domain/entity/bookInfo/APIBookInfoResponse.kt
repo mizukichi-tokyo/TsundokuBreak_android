@@ -1,6 +1,6 @@
 package com.example.tsundokubreak.domain.entity.bookInfo
 
-data class BookInfo(
+data class APIBookInfoResponse(
     val kind: String? = null,
     val totalItems: Long? = null,
     val items: List<Item>? = null
