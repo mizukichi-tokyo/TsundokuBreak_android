@@ -58,19 +58,16 @@
                 android:layout_marginStart="10dp"
                 android:textSize="20sp" />
 
-            <com.sackcentury.shinebuttonlib.ShineButton
+            <com.airbnb.lottie.LottieAnimationView
                 android:id="@+id/dokuryo_button"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
                 android:layout_marginTop="30dp"
-                app:layout_constraintBottom_toBottomOf="@+id/author"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:layout_centerInParent="true"
-                android:src="@android:color/darker_gray"
-                app:btn_color="@android:color/darker_gray"
-                app:btn_fill_color="@android:color/holo_orange_dark"
-                app:allow_random_color="false"
-                app:siShape="@raw/check"/>
+                app:lottie_rawRes="@raw/popper"
+                app:lottie_autoPlay="true"
+                app:lottie_loop="true"/>
 
             <EditText
                 android:id="@+id/read_pages"

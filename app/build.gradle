@@ -78,8 +78,7 @@ dependencies {
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
-    //shineButton
-    implementation 'com.sackcentury:shinebutton:1.0.0'
+
     //AwesomeDialog
     implementation 'com.github.chnouman:AwesomeDialog:1.0.5'
 
@@ -121,6 +120,10 @@ dependencies {
     // For local unit tests
     testImplementation "com.google.dagger:hilt-android-testing:$hilt_version"
     kaptTest "com.google.dagger:hilt-android-compiler:$hilt_version"
+
+
+    def lottieVersion = "3.6.0"
+    implementation "com.airbnb.android:lottie:$lottieVersion"
 
 }
 
