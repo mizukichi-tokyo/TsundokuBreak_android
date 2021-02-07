@@ -28,6 +28,7 @@ xmlns:tools="http://schemas.android.com/tools">
             style="@style/ChildTitle"
             android:gravity="center_horizontal"
             android:textColor="@color/black"
+            android:imeOptions="actionSearch"
             android:background="@drawable/round_shape_text"
             android:inputType="number"
             android:ems="13"
