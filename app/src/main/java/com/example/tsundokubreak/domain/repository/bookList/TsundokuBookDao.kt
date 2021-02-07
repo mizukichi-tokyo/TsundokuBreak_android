@@ -6,10 +6,10 @@ import com.example.tsundokubreak.domain.entity.bookInfo.TsundokuBook
 @Dao
 interface TsundokuBookDao {
 
-    @Query("select * from tsundokuBook where dokuryo = 'false'")
+    @Query("select * from tsundokuBook where dokuryo = 'false'　ORDER BY id asc")
     suspend fun getTsundokuBookList(): List<TsundokuBook>
 
-    @Query("select * from tsundokuBook where dokuryo = 'true'")
+    @Query("select * from tsundokuBook where dokuryo = 'true' ORDER BY id asc")
     suspend fun getDokuryoBookList(): List<TsundokuBook>
 
     @Insert
