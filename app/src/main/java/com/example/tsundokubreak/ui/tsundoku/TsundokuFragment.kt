@@ -29,7 +29,7 @@ class TsundokuFragment : Fragment() {
 
     private val viewModel by viewModels<TsundokuViewModel>()
 
-    val pokemonList = listOf(
+    private val BookList = listOf(
         "ピカチュウ",
         "カイリュー",
         "ヤドラン",
@@ -55,10 +55,10 @@ class TsundokuFragment : Fragment() {
         .bindLifecycleOwner(viewLifecycleOwner) {
             it.recyclerView.apply {
                 activity?.window?.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
-                val pokemonAdapter = PokemonItemListAdapter(context, pokemonList)
+                val bookAdapter = BookItemListAdapter(context, BookList)
 
-                pokemonAdapter.setOnDokuryoButtonClickListener(
-                    object : PokemonItemListAdapter.OnDokuryoButtonClickListener {
+                bookAdapter.setOnDokuryoButtonClickListener(
+                    object : BookItemListAdapter.OnDokuryoButtonClickListener {
 
                         override fun onDokuryoButton(
                             lottieAnimationView: LottieAnimationView,
@@ -68,7 +68,7 @@ class TsundokuFragment : Fragment() {
                         }
                     }
                 )
-                adapter = pokemonAdapter
+                adapter = bookAdapter
                 layoutManager = LinearLayoutManager(context)
             }
             it.fab.setOnClickListener {
@@ -76,7 +76,7 @@ class TsundokuFragment : Fragment() {
             }
         }
 
-    class PokemonItemListAdapter(context: Context, val list: List<String>) : RecyclerView.Adapter<MyViewHolder>() {
+    class BookItemListAdapter(context: Context, val list: List<String>) : RecyclerView.Adapter<MyViewHolder>() {
 
         private lateinit var listener: OnDokuryoButtonClickListener
 
@@ -217,7 +217,7 @@ private fun TsundokuFragment.catflyButtonClick(lottieAnimationView: LottieAnimat
     }, 3000)
 }
 
-private fun TsundokuFragment.PokemonItemListAdapter.manageInputEditTextView(it: View) {
+private fun TsundokuFragment.BookItemListAdapter.manageInputEditTextView(it: View) {
     val inputMethodManager: InputMethodManager =
         it.context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
     inputMethodManager.hideSoftInputFromWindow(

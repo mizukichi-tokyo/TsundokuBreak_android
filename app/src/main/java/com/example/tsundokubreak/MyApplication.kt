@@ -5,10 +5,6 @@ import androidx.room.Room
 import com.example.tsundokubreak.domain.service.AppDatabase
 import dagger.hilt.android.HiltAndroidApp
 import timber.log.Timber
-import timber.log.Timber.DebugTree
-
-
-
 
 @HiltAndroidApp
 class MyApplication : Application() {
