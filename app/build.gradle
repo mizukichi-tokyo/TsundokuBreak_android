@@ -16,6 +16,7 @@ ktlint {
         reporter "checkstyle"
     }
 //    アウトプットの場所と形式をDangerで指定する形式と一致させること
+
     tasks.withType(org.jlleitschuh.gradle.ktlint.KtlintCheckTask) {
         reporterOutputDir = project.layout.buildDirectory.dir("${buildDir}/reports/ktlint")
     }
