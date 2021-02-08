@@ -60,8 +60,11 @@ class TsundokuFragment : Fragment() {
                 pokemonAdapter.setOnDokuryoButtonClickListener(
                     object : PokemonItemListAdapter.OnDokuryoButtonClickListener {
 
-                        override fun onDokuryoButton(lottieAnimationView: LottieAnimationView,position: Int) {
-                            checkButtonClick(lottieAnimationView)
+                        override fun onDokuryoButton(
+                            lottieAnimationView: LottieAnimationView,
+                            position: Int
+                        ) {
+                            catflyButtonClick(lottieAnimationView)
                         }
                     }
                 )
@@ -78,7 +81,7 @@ class TsundokuFragment : Fragment() {
         private lateinit var listener: OnDokuryoButtonClickListener
 
         interface OnDokuryoButtonClickListener {
-            fun onDokuryoButton(lottieAnimationView: LottieAnimationView,position: Int)
+            fun onDokuryoButton(lottieAnimationView: LottieAnimationView, position: Int)
         }
 
         fun setOnDokuryoButtonClickListener(listener: OnDokuryoButtonClickListener) {
@@ -103,7 +106,7 @@ class TsundokuFragment : Fragment() {
                 it.pokemonText = list[position]
                 val lottieAnimationView = it.dokuryoButton
                 it.dokuryoButton.setOnClickListener {
-                    listener.onDokuryoButton(lottieAnimationView,position)
+                    listener.onDokuryoButton(lottieAnimationView, position)
                 }
 
                 it.tsundokuItem.setOnClickListener {
@@ -114,60 +117,112 @@ class TsundokuFragment : Fragment() {
 
         override fun getItemCount(): Int = list.size
 
-        private fun manageInputEditTextView(it: View){
-            val inputMethodManager: InputMethodManager =
-                it.context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-            inputMethodManager.hideSoftInputFromWindow(
-                it.windowToken,
-                InputMethodManager.HIDE_NOT_ALWAYS
-            )
-            it.clearFocus()
-        }
+//        private fun manageInputEditTextView(it: View) {
+//            val inputMethodManager: InputMethodManager =
+//                it.context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+//            inputMethodManager.hideSoftInputFromWindow(
+//                it.windowToken,
+//                InputMethodManager.HIDE_NOT_ALWAYS
+//            )
+//            it.clearFocus()
+//        }
     }
 
     class MyViewHolder(val binding: ItemTsundokuRecyclerViewBinding) : RecyclerView.ViewHolder(
         binding.root
     )
 
-    private fun checkButtonClick(lottieAnimationView: LottieAnimationView) {
-        activity?.window?.addFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
+//    private fun catflyButtonClick(lottieAnimationView: LottieAnimationView) {
+//        activity?.window?.addFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
+//
+//        catflyExplodePopper(lottieAnimationView)
+//
+//        Handler(Looper.getMainLooper()).postDelayed({
+//            showDokuryoDialog()
+//        }, 3000)
+//    }
 
-        catflyExplodePopper(lottieAnimationView)
+//    private fun catflyExplodePopper(lottieAnimationView: LottieAnimationView) {
+//        var clickedFav: Boolean = false
+//        if (clickedFav) {
+//            lottieAnimationView.progress = 0f
+//            clickedFav = false
+//        } else {
+//            lottieAnimationView.playAnimation()
+//            clickedFav = true
+//        }
+//    }
 
-        Handler(Looper.getMainLooper()).postDelayed({
-            showDokuryoDialog()
-        }, 3000)
-    }
+//    private fun showDokuryoDialog() {
+//        AwesomeDialog.build(requireActivity())
+//            .title("読了おめでとう！")
+//            .body("読了一覧へ追加移しますか？")
+//            .position(AwesomeDialog.POSITIONS.CENTER)
+//            .icon(R.raw.check_orange)
+//            .onPositive(
+//                "OK",
+//                R.color.orange
+//            ) {
+//                Log.d("TAG", "positive ")
+//            }
+//            .onNegative(
+//                "cancel",
+//                R.color.gray
+//            ) {
+//                Log.d("TAG", "negative ")
+//            }
+//        activity?.window?.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
+//    }
+}
 
-    private fun catflyExplodePopper(lottieAnimationView: LottieAnimationView) {
-        var clickedFav: Boolean = false
-        if(clickedFav){
-            lottieAnimationView.progress = 0f
-            clickedFav = false
-        }else{
-            lottieAnimationView.playAnimation()
-            clickedFav = true
+private fun TsundokuFragment.showDokuryoDialog() {
+    AwesomeDialog.build(requireActivity())
+        .title("読了おめでとう！")
+        .body("読了一覧へ追加移しますか？")
+        .position(AwesomeDialog.POSITIONS.CENTER)
+        .icon(R.raw.check_orange)
+        .onPositive(
+            "OK",
+            R.color.orange
+        ) {
+            Log.d("TAG", "positive ")
         }
-    }
+        .onNegative(
+            "cancel",
+            R.color.gray
+        ) {
+            Log.d("TAG", "negative ")
+        }
+    activity?.window?.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
+}
 
-    private fun showDokuryoDialog() {
-        AwesomeDialog.build(requireActivity())
-            .title("読了おめでとう！")
-            .body("読了一覧へ追加移しますか？")
-            .position(AwesomeDialog.POSITIONS.CENTER)
-            .icon(R.raw.check_orange)
-            .onPositive(
-                "OK",
-                R.color.orange
-            ) {
-                Log.d("TAG", "positive ")
-            }
-            .onNegative(
-                "cancel",
-                R.color.gray
-            ) {
-                Log.d("TAG", "negative ")
-            }
-        activity?.window?.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
+private fun TsundokuFragment.catflyExplodePopper(lottieAnimationView: LottieAnimationView) {
+    var clickedFav: Boolean = false
+    if (clickedFav) {
+        lottieAnimationView.progress = 0f
+        clickedFav = false
+    } else {
+        lottieAnimationView.playAnimation()
+        clickedFav = true
     }
+}
+
+private fun TsundokuFragment.catflyButtonClick(lottieAnimationView: LottieAnimationView) {
+    activity?.window?.addFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
+
+    catflyExplodePopper(lottieAnimationView)
+
+    Handler(Looper.getMainLooper()).postDelayed({
+        showDokuryoDialog()
+    }, 3000)
+}
+
+private fun TsundokuFragment.PokemonItemListAdapter.manageInputEditTextView(it: View) {
+    val inputMethodManager: InputMethodManager =
+        it.context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+    inputMethodManager.hideSoftInputFromWindow(
+        it.windowToken,
+        InputMethodManager.HIDE_NOT_ALWAYS
+    )
+    it.clearFocus()
 }
