@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.awesomedialog.*
@@ -15,10 +16,13 @@ import com.example.tsundokubreak.R
 import com.example.tsundokubreak.bindLifecycleOwner
 import com.example.tsundokubreak.databinding.FragmentDokuryoBinding
 import com.example.tsundokubreak.databinding.ItemDokuryoRecyclerViewBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class DokuryoFragment : Fragment() {
 
-    private lateinit var dokuryoViewModel: DokuryoViewModel
+//    private lateinit var dokuryoViewModel: DokuryoViewModel
+    private val viewModel by viewModels<DokuryoViewModel>()
 
     val pokemonList = listOf(
         "ピカチュウ",
