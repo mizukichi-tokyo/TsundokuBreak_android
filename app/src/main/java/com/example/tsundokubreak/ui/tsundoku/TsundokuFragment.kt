@@ -23,6 +23,7 @@ import com.example.tsundokubreak.bindLifecycleOwner
 import com.example.tsundokubreak.databinding.FragmentTsundokuBinding
 import com.example.tsundokubreak.databinding.ItemTsundokuRecyclerViewBinding
 import dagger.hilt.android.AndroidEntryPoint
+import timber.log.Timber
 
 @AndroidEntryPoint
 class TsundokuFragment : Fragment() {
@@ -185,13 +186,13 @@ private fun TsundokuFragment.showDokuryoDialog() {
             "OK",
             R.color.orange
         ) {
-            Log.d("TAG", "positive ")
+            Timber.d("dokuryoDialog:positive")
         }
         .onNegative(
             "cancel",
             R.color.gray
         ) {
-            Log.d("TAG", "negative ")
+            Timber.d("dokuryoDialog:negative")
         }
     activity?.window?.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
 }
