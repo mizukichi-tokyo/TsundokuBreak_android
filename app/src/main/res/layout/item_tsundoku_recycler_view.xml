@@ -66,8 +66,8 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:lottie_rawRes="@raw/popper"
-                app:lottie_autoPlay="true"
-                app:lottie_loop="true"/>
+                app:lottie_autoPlay="false"
+                app:lottie_loop="false"/>
 
             <EditText
                 android:id="@+id/read_pages"

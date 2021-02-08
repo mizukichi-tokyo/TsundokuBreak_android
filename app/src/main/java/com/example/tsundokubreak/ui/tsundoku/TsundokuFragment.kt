@@ -16,6 +16,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.airbnb.lottie.LottieAnimationView
 import com.example.awesomedialog.*
 import com.example.tsundokubreak.R
 import com.example.tsundokubreak.bindLifecycleOwner
@@ -26,7 +27,6 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class TsundokuFragment : Fragment() {
 
-//    private lateinit var tsundokuViewModel: TsundokuViewModel
     private val viewModel by viewModels<TsundokuViewModel>()
 
     val pokemonList = listOf(
@@ -57,14 +57,14 @@ class TsundokuFragment : Fragment() {
                 activity?.window?.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
                 val pokemonAdapter = PokemonItemListAdapter(context, pokemonList)
 
-                pokemonAdapter.setOnBookCellClickListener(
-                    object : PokemonItemListAdapter.OnBookCellClickListener {
-                        override fun onItemClick(position: Int) {
-                            checkButtonClick()
+                pokemonAdapter.setOnDokuryoButtonClickListener(
+                    object : PokemonItemListAdapter.OnDokuryoButtonClickListener {
+
+                        override fun onDokuryoButton(lottieAnimationView: LottieAnimationView,position: Int) {
+                            checkButtonClick(lottieAnimationView)
                         }
                     }
                 )
-
                 adapter = pokemonAdapter
                 layoutManager = LinearLayoutManager(context)
             }
@@ -73,11 +73,81 @@ class TsundokuFragment : Fragment() {
             }
         }
 
-    private fun checkButtonClick() {
+    class PokemonItemListAdapter(context: Context, val list: List<String>) : RecyclerView.Adapter<MyViewHolder>() {
+
+        private lateinit var listener: OnDokuryoButtonClickListener
+
+        interface OnDokuryoButtonClickListener {
+            fun onDokuryoButton(lottieAnimationView: LottieAnimationView,position: Int)
+        }
+
+        fun setOnDokuryoButtonClickListener(listener: OnDokuryoButtonClickListener) {
+            this.listener = listener
+        }
+
+        private val layoutInflater = LayoutInflater.from(context)
+
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder =
+        MyViewHolder(
+            DataBindingUtil.inflate(
+                layoutInflater,
+                R.layout.item_tsundoku_recycler_view,
+                parent,
+                false
+            )
+        )
+
+        override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+            holder.binding.let {
+                it.positionText = position.toString()
+                it.pokemonText = list[position]
+                val lottieAnimationView = it.dokuryoButton
+                it.dokuryoButton.setOnClickListener {
+                    listener.onDokuryoButton(lottieAnimationView,position)
+                }
+
+                it.tsundokuItem.setOnClickListener {
+                    manageInputEditTextView(it)
+                }
+            }
+        }
+
+        override fun getItemCount(): Int = list.size
+
+        private fun manageInputEditTextView(it: View){
+            val inputMethodManager: InputMethodManager =
+                it.context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            inputMethodManager.hideSoftInputFromWindow(
+                it.windowToken,
+                InputMethodManager.HIDE_NOT_ALWAYS
+            )
+            it.clearFocus()
+        }
+    }
+
+    class MyViewHolder(val binding: ItemTsundokuRecyclerViewBinding) : RecyclerView.ViewHolder(
+        binding.root
+    )
+
+    private fun checkButtonClick(lottieAnimationView: LottieAnimationView) {
         activity?.window?.addFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
+
+        catflyExplodePopper(lottieAnimationView)
+
         Handler(Looper.getMainLooper()).postDelayed({
             showDokuryoDialog()
-        }, 1000)
+        }, 3000)
+    }
+
+    private fun catflyExplodePopper(lottieAnimationView: LottieAnimationView) {
+        var clickedFav: Boolean = false
+        if(clickedFav){
+            lottieAnimationView.progress = 0f
+            clickedFav = false
+        }else{
+            lottieAnimationView.playAnimation()
+            clickedFav = true
+        }
     }
 
     private fun showDokuryoDialog() {
@@ -100,54 +170,4 @@ class TsundokuFragment : Fragment() {
             }
         activity?.window?.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
     }
-
-    class PokemonItemListAdapter(context: Context, val list: List<String>) : RecyclerView.Adapter<MyViewHolder>() {
-
-        private lateinit var listener: OnBookCellClickListener
-
-        interface OnBookCellClickListener {
-            fun onItemClick(position: Int)
-        }
-
-        fun setOnBookCellClickListener(listener: OnBookCellClickListener) {
-            this.listener = listener
-        }
-
-        private val layoutInflater = LayoutInflater.from(context)
-
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder =
-        MyViewHolder(
-            DataBindingUtil.inflate(
-                layoutInflater,
-                R.layout.item_tsundoku_recycler_view,
-                parent,
-                false
-            )
-        )
-
-        override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-            holder.binding.let {
-                it.positionText = position.toString()
-                it.pokemonText = list[position]
-                it.dokuryoButton.setOnClickListener {
-                    listener.onItemClick(position)
-                }
-                it.tsundokuItem.setOnClickListener {
-                    val inputMethodManager: InputMethodManager =
-                        it.context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-                    inputMethodManager.hideSoftInputFromWindow(
-                        it.windowToken,
-                        InputMethodManager.HIDE_NOT_ALWAYS
-                    )
-                    it.clearFocus()
-                }
-            }
-        }
-
-        override fun getItemCount(): Int = list.size
-    }
-
-    class MyViewHolder(val binding: ItemTsundokuRecyclerViewBinding) : RecyclerView.ViewHolder(
-        binding.root
-    )
 }
