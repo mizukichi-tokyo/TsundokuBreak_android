@@ -65,7 +65,7 @@ class DokuryoFragment : Fragment() {
                             }
                         }
                     )
-                    adapter = DokuryoBookItemListAdapter(context, dokuryoBookList)
+                    adapter = dokuryoBookAdapter
                     layoutManager = LinearLayoutManager(context)
                 }
             }
@@ -130,25 +130,15 @@ private fun DokuryoFragment.showDeleteDialog() {
         ) {
             Timber.d("deleteDialog:cancel")
         }
-}
-
-private fun DokuryoFragment.trashBoxAnimate(lottieAnimationView: LottieAnimationView) {
-    var clickedFav: Boolean = false
-    if (clickedFav) {
-        lottieAnimationView.progress = 0f
-        clickedFav = false
-    } else {
-        lottieAnimationView.playAnimation()
-        clickedFav = true
-    }
+    activity?.window?.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
 }
 
 private fun DokuryoFragment.deleteButtonClick(lottieAnimationView: LottieAnimationView) {
     activity?.window?.addFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
 
-    trashBoxAnimate(lottieAnimationView)
+    lottieAnimationView.playAnimation()
 
     Handler(Looper.getMainLooper()).postDelayed({
         showDeleteDialog()
-    }, 3000)
+    }, 2500)
 }
