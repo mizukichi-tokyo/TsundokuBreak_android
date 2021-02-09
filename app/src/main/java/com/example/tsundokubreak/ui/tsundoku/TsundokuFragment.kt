@@ -116,63 +116,11 @@ class TsundokuFragment : Fragment() {
         }
 
         override fun getItemCount(): Int = list.size
-
-//        private fun manageInputEditTextView(it: View) {
-//            val inputMethodManager: InputMethodManager =
-//                it.context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-//            inputMethodManager.hideSoftInputFromWindow(
-//                it.windowToken,
-//                InputMethodManager.HIDE_NOT_ALWAYS
-//            )
-//            it.clearFocus()
-//        }
     }
 
     class MyViewHolder(val binding: ItemTsundokuRecyclerViewBinding) : RecyclerView.ViewHolder(
         binding.root
     )
-
-//    private fun catflyButtonClick(lottieAnimationView: LottieAnimationView) {
-//        activity?.window?.addFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
-//
-//        catflyExplodePopper(lottieAnimationView)
-//
-//        Handler(Looper.getMainLooper()).postDelayed({
-//            showDokuryoDialog()
-//        }, 3000)
-//    }
-
-//    private fun catflyExplodePopper(lottieAnimationView: LottieAnimationView) {
-//        var clickedFav: Boolean = false
-//        if (clickedFav) {
-//            lottieAnimationView.progress = 0f
-//            clickedFav = false
-//        } else {
-//            lottieAnimationView.playAnimation()
-//            clickedFav = true
-//        }
-//    }
-
-//    private fun showDokuryoDialog() {
-//        AwesomeDialog.build(requireActivity())
-//            .title("読了おめでとう！")
-//            .body("読了一覧へ追加移しますか？")
-//            .position(AwesomeDialog.POSITIONS.CENTER)
-//            .icon(R.raw.check_orange)
-//            .onPositive(
-//                "OK",
-//                R.color.orange
-//            ) {
-//                Log.d("TAG", "positive ")
-//            }
-//            .onNegative(
-//                "cancel",
-//                R.color.gray
-//            ) {
-//                Log.d("TAG", "negative ")
-//            }
-//        activity?.window?.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
-//    }
 }
 
 private fun TsundokuFragment.showDokuryoDialog() {
@@ -196,21 +144,10 @@ private fun TsundokuFragment.showDokuryoDialog() {
     activity?.window?.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
 }
 
-private fun TsundokuFragment.catflyExplodePopper(lottieAnimationView: LottieAnimationView) {
-    var clickedFav: Boolean = false
-    if (clickedFav) {
-        lottieAnimationView.progress = 0f
-        clickedFav = false
-    } else {
-        lottieAnimationView.playAnimation()
-        clickedFav = true
-    }
-}
-
 private fun TsundokuFragment.catflyButtonClick(lottieAnimationView: LottieAnimationView) {
     activity?.window?.addFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
 
-    catflyExplodePopper(lottieAnimationView)
+    lottieAnimationView.playAnimation()
 
     Handler(Looper.getMainLooper()).postDelayed({
         showDokuryoDialog()
