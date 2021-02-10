@@ -2,6 +2,7 @@ package com.example.tsundokubreak.domain.repository.bookList
 
 import androidx.room.*
 import com.example.tsundokubreak.domain.entity.bookInfo.TsundokuBook
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface BookListDao {
@@ -10,10 +11,10 @@ interface BookListDao {
     // Room maps boolean data to an INTEGER column
     // Room mapping true to 1 and false to 0
     @Query("select * from tsundokuBook where dokuryo = 0 ")
-    suspend fun getTsundokuBookList(): List<TsundokuBook>
+    fun getTsundokuBookList(): Flow<List<TsundokuBook>>
 
     @Query("select * from tsundokuBook where dokuryo = 1 ")
-    suspend fun getDokuryoBookList(): List<TsundokuBook>
+    fun getDokuryoBookList(): Flow<List<TsundokuBook>>
 
     @Insert
     suspend fun addTsundokuBook(tsundokuBook: TsundokuBook)
@@ -22,5 +23,5 @@ interface BookListDao {
     suspend fun updateTsundokuBook(tsundokuBook: TsundokuBook)
 
     @Delete
-    suspend fun deleteTsundokuBook(tsundokuBook: TsundokuBook)
+    suspend fun deleteDokuryoBook(tsundokuBook: TsundokuBook)
 }
