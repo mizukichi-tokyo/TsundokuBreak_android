@@ -4,7 +4,7 @@ import androidx.room.*
 import com.example.tsundokubreak.domain.entity.bookInfo.TsundokuBook
 
 @Dao
-interface TsundokuBookDao {
+interface BookListDao {
 
     // SQLite have no boolean data type
     // Room maps boolean data to an INTEGER column
