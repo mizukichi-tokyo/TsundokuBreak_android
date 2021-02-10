@@ -5,7 +5,8 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class TsundokuBook(
-    @PrimaryKey(autoGenerate = true) val id: Int,
+//    id = 0だとroomが自動で振り分けてくれます
+    @PrimaryKey(autoGenerate = true) val id: Int = 0,
     val title: String? = "",
     val author: String? = "",
     val totalPageCount: Int? = 0,
