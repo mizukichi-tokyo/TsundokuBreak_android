@@ -1,9 +1,10 @@
 package com.example.tsundokubreak.domain.repository.bookList
 
 import com.example.tsundokubreak.domain.entity.bookInfo.TsundokuBook
+import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow
 
-class BookListRepositoryImpl(
+class BookListRepositoryImpl @Inject constructor(
     private val bookListDao: BookListDao
 ) : BookListRepository {
 

@@ -2,6 +2,9 @@ package com.example.tsundokubreak.domain.service
 
 import android.content.Context
 import androidx.room.Room
+import com.example.tsundokubreak.domain.repository.SearchBookInfo.SearchBookInfoDataStore
+import com.example.tsundokubreak.domain.repository.SearchBookInfo.SearchBookInfoRepository
+import com.example.tsundokubreak.domain.repository.SearchBookInfo.SearchBookInfoRepositoryImpl
 import com.example.tsundokubreak.domain.repository.bookList.BookListDao
 import com.example.tsundokubreak.domain.repository.bookList.BookListRepository
 import com.example.tsundokubreak.domain.repository.bookList.BookListRepositoryImpl
@@ -31,6 +34,19 @@ object AppModule {
     @Provides
     @Singleton
     fun provideTsundokuBookDao(db: AppDatabase) = db.tsundokuBookDao()
+
+    @Provides
+    @Singleton
+    fun provideBookInfoDataStore() = SearchBookInfoDataStore
+
+    @Provides
+    @Singleton
+    fun provideBookInfoRepository(
+        bookListDao: BookListDao,
+        bookInfoDataStore: SearchBookInfoDataStore
+    ): SearchBookInfoRepository {
+        return SearchBookInfoRepositoryImpl(bookListDao, bookInfoDataStore)
+    }
 
     @Provides
     @Singleton
