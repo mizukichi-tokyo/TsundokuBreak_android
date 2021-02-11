@@ -7,7 +7,7 @@ import com.example.tsundokubreak.R
 
 @BindingAdapter("imageURL")
 fun ImageView.imageURL(imageURL: String?) {
-    imageURL ?:return
+    imageURL ?: return
     Glide.with(context)
         .load(imageURL)
         .thumbnail(Glide.with(context).load(R.raw.loader))
