@@ -1,6 +1,5 @@
 package com.example.tsundokubreak.domain.repository.searchBookInfo
 
-import android.util.Log.d
 import com.example.tsundokubreak.domain.entity.common.Resource
 import com.example.tsundokubreak.domain.entity.bookInfo.TsundokuBook
 import com.example.tsundokubreak.domain.entity.common.ErrorBody
@@ -10,7 +9,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.withContext
-import timber.log.Timber
 
 object SearchBookInfoDataStore {
 
@@ -34,15 +32,17 @@ object SearchBookInfoDataStore {
         .onSuccess {
             if (it.isSuccessful) {
                 it.body()?.let {
-
-                        var bookInfo = TsundokuBook(
-                            title = it.items?.first()?.volumeInfo?.title,
-                            author = it.items?.first()?.volumeInfo?.authors?.first(),
-                            totalPageCount = it.items?.first()?.volumeInfo?.pageCount?.toInt(),
-                            imageURL = it.items?.first()?.volumeInfo?.imageLinks?.thumbnail,
-                        )
-                        Timber.d(bookInfo.toString())
-                        emit(Resource.Success(bookInfo))
+                        if(it.items != null){
+                            var bookInfo = TsundokuBook(
+                                title = it.items.first().volumeInfo?.title,
+                                author = it.items.first().volumeInfo?.authors?.first(),
+                                totalPageCount = it.items.first().volumeInfo?.pageCount?.toInt(),
+                                imageURL = it.items.first().volumeInfo?.imageLinks?.thumbnail,
+                            )
+                            emit(Resource.Success(bookInfo))
+                        } else{
+                            emit(Resource.Empty)
+                        }
                     }
                 } else {
                 emit(Resource.ApiError(ErrorBody.fromJson(it.errorBody()?.string())))
