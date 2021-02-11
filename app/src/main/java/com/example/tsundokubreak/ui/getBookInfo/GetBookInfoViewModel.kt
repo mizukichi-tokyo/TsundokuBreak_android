@@ -1,5 +1,6 @@
 package com.example.tsundokubreak.ui.getBookInfo
 
+import android.location.Location
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -10,6 +11,7 @@ import com.example.tsundokubreak.domain.repository.searchBookInfo.SearchBookInfo
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -22,6 +24,24 @@ class GetBookInfoViewModel @Inject constructor(
 
     val gotBookInfo: StateFlow<Resource<TsundokuBook>> = _gotBookInfo
 
+    private val _isbnString = MutableLiveData("0")
+
+    fun setIsbnString(isbn: String) {
+        _isbnString.value = isbn
+    }
+
+    fun getBookInfoFromISBN() {
+        viewModelScope.launch {
+            _isbnString.value?.let {
+                searchBookInfoRepository.getBookInfo(it).collect {
+                    _gotBookInfo.value = it
+                    }
+                }
+            }
+        }
+
+
+
 
     private var _canRegisterBook: MutableLiveData<Boolean> = MutableLiveData(false)
     var canRegisterBook: LiveData<Boolean> = _canRegisterBook
@@ -30,11 +50,6 @@ class GetBookInfoViewModel @Inject constructor(
         _canRegisterBook = MutableLiveData(true)
     }
 
-    fun getBookInfoFromISBN(){
-        viewModelScope.launch {
-            searchBookInfoRepository.getBookInfo("0")
-        }
-    }
 
     val emptyBookInfo =
         TsundokuBook(

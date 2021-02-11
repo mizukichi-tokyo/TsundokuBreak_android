@@ -6,9 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import com.example.tsundokubreak.bindLifecycleOwner
 import com.example.tsundokubreak.databinding.FragmentGetBookInfoBinding
+import com.example.tsundokubreak.domain.entity.common.Resource
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
 
 @AndroidEntryPoint
 class GetBookInfoFragment : Fragment() {
@@ -25,30 +28,35 @@ class GetBookInfoFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View = FragmentGetBookInfoBinding.inflate(inflater, container, false)
             .bindLifecycleOwner(viewLifecycleOwner) {
-//                lifecycleScope.launchWhenResumed {
+                lifecycleScope.launchWhenResumed {
 
-//                    viewModel.gotBookInfo.collect() { resource ->
-//                        when (resource) {
-//                            is Resource.Empty -> {
-//                                print("ok")
-//                            }
-//                            is Resource.InProgress -> {
-//                                print("ok")
-//                            }
-//                            is Resource.Success -> {
-//                                print("ok")
-//                                it.tsundokuBook = resource.extractData
-//                            }
-//                            is Resource.ApiError -> {
-//                                print("ok")
-//                            }
-//                            is Resource.NetworkError -> {
-//                                print("ok")
-//                            }
-//                        }
-//                    }
-//                }
+                    viewModel.gotBookInfo.collect() { resource ->
+                        when (resource) {
+                            is Resource.Empty -> {
+                                it.tsundokuBook = viewModel.emptyBookInfo
+                            }
+                            is Resource.InProgress -> {
+                                it.tsundokuBook = viewModel.emptyBookInfo
+                            }
+                            is Resource.Success -> {
+                                it.tsundokuBook = resource.extractData
+                            }
+                            is Resource.ApiError -> {
+                                it.tsundokuBook = viewModel.emptyBookInfo
+                            }
+                            is Resource.NetworkError -> {
+                                it.tsundokuBook = viewModel.emptyBookInfo
+                            }
+                        }
+                    }
+                }
                 it.tsundokuBook = viewModel.emptyBookInfo
                 it.canRegister = viewModel.canRegisterBook.value
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel.setIsbnString("9784873116594")
+        viewModel.getBookInfoFromISBN()
     }
 }
