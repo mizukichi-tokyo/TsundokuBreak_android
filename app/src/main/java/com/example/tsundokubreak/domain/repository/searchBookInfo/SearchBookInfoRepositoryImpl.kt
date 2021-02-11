@@ -11,7 +11,7 @@ class SearchBookInfoRepositoryImpl @Inject constructor(
     private val searchBookInfoDataStore: SearchBookInfoDataStore
 ) : SearchBookInfoRepository {
 
-    override suspend fun getBookInfo(isbn: String): Flow<Resource<TsundokuBook>> =
+    override suspend fun getBookInfo(isbn: String?): Flow<Resource<TsundokuBook>> =
         searchBookInfoDataStore.fetchBookInfo(isbn)
 
     override suspend fun addBookToTsundoku(

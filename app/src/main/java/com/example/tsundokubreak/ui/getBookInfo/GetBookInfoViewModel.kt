@@ -25,7 +25,7 @@ class GetBookInfoViewModel @Inject constructor(
 
     val gotBookInfo: StateFlow<Resource<TsundokuBook>> = _gotBookInfo
 
-    var isbnString = MutableLiveData<String>("")
+    var isbnString = MutableLiveData<String?>()
 
     fun getBookInfoFromISBN() {
         viewModelScope.launch {
@@ -46,8 +46,8 @@ class GetBookInfoViewModel @Inject constructor(
     val emptyBookInfo =
         TsundokuBook(
         0,
-        "???",
-        "???",
+        "該当する書籍がありません",
+        "ISBNコードを入力してください",
         0,
         "",)
 }

@@ -74,7 +74,10 @@ xmlns:tools="http://schemas.android.com/tools">
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@{tsundokuBook.title}"
-                android:textSize="20sp" />
+                android:maxLines="1"
+                app:autoSizeTextType="uniform"
+                app:autoSizeMaxTextSize="20sp"
+                />
 
         </LinearLayout>
 
@@ -96,7 +99,10 @@ xmlns:tools="http://schemas.android.com/tools">
                 android:layout_height="wrap_content"
                 android:text="@{tsundokuBook.author}"
                 android:layout_marginTop="10dp"
-                android:textSize="20sp" />
+                android:maxLines="1"
+                app:autoSizeTextType="uniform"
+                app:autoSizeMaxTextSize="20sp"
+                />
 
         </LinearLayout>
 
