@@ -2,9 +2,9 @@ package com.example.tsundokubreak.domain.service
 
 import android.content.Context
 import androidx.room.Room
-import com.example.tsundokubreak.domain.repository.SearchBookInfo.SearchBookInfoDataStore
-import com.example.tsundokubreak.domain.repository.SearchBookInfo.SearchBookInfoRepository
-import com.example.tsundokubreak.domain.repository.SearchBookInfo.SearchBookInfoRepositoryImpl
+import com.example.tsundokubreak.domain.repository.searchBookInfo.SearchBookInfoDataStore
+import com.example.tsundokubreak.domain.repository.searchBookInfo.SearchBookInfoRepository
+import com.example.tsundokubreak.domain.repository.searchBookInfo.SearchBookInfoRepositoryImpl
 import com.example.tsundokubreak.domain.repository.bookList.BookListDao
 import com.example.tsundokubreak.domain.repository.bookList.BookListRepository
 import com.example.tsundokubreak.domain.repository.bookList.BookListRepositoryImpl

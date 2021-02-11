@@ -1,4 +1,4 @@
-package com.example.tsundokubreak.domain.repository.SearchBookInfo
+package com.example.tsundokubreak.domain.repository.searchBookInfo
 
 import com.example.tsundokubreak.domain.entity.common.Resource
 import com.example.tsundokubreak.domain.entity.bookInfo.TsundokuBook
