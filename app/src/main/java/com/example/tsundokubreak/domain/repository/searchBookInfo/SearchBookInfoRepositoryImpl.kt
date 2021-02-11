@@ -8,11 +8,11 @@ import kotlinx.coroutines.flow.Flow
 
 class SearchBookInfoRepositoryImpl @Inject constructor(
     private val bookListDao: BookListDao,
-    private val bookInfoDataStore: SearchBookInfoDataStore
+    private val searchBookInfoDataStore:SearchBookInfoDataStore
 ) : SearchBookInfoRepository {
 
     override suspend fun getBookInfo(): Flow<Resource<TsundokuBook>> =
-        bookInfoDataStore.fetchBookInfo("1")
+        searchBookInfoDataStore.fetchBookInfo("1")
 
     override suspend fun addBookToTsundoku(
         tsundokuBook: TsundokuBook,

@@ -33,19 +33,19 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideTsundokuBookDao(db: AppDatabase) = db.tsundokuBookDao()
+    fun provideListDao(db: AppDatabase) = db.bookListDao()
 
     @Provides
     @Singleton
-    fun provideBookInfoDataStore() = SearchBookInfoDataStore
+    fun provideSearchBookInfoDataStore() = SearchBookInfoDataStore
 
     @Provides
     @Singleton
-    fun provideBookInfoRepository(
+    fun provideSearchBookInfoRepository(
         bookListDao: BookListDao,
-        bookInfoDataStore: SearchBookInfoDataStore
+        searchBookInfoDataStore: SearchBookInfoDataStore
     ): SearchBookInfoRepository {
-        return SearchBookInfoRepositoryImpl(bookListDao, bookInfoDataStore)
+        return SearchBookInfoRepositoryImpl(bookListDao, searchBookInfoDataStore)
     }
 
     @Provides

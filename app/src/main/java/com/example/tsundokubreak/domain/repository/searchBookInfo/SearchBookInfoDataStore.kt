@@ -11,6 +11,7 @@ import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.withContext
 
 object SearchBookInfoDataStore {
+
     fun fetchBookInfo(
         isbn: String?
     ): Flow<Resource<TsundokuBook>> = flow {

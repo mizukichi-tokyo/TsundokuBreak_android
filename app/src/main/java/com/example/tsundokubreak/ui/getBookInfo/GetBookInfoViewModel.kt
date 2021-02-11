@@ -4,12 +4,13 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.tsundokubreak.domain.entity.bookInfo.TsundokuBook
+import com.example.tsundokubreak.domain.repository.searchBookInfo.SearchBookInfoRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
 class GetBookInfoViewModel @Inject constructor(
-
+    private val searchBookInfoRepository: SearchBookInfoRepository
 ) : ViewModel() {
     private var _canRegisterBook: MutableLiveData<Boolean> = MutableLiveData(false)
     var canRegisterBook: LiveData<Boolean> = _canRegisterBook
