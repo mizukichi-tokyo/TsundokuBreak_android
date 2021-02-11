@@ -40,8 +40,13 @@ class GetBookInfoFragment : Fragment() {
                                 viewModel.setRegisterBookState(false)
                             }
                             is Resource.Success -> {
-                                it.tsundokuBook = resource.extractData
-                                viewModel.setRegisterBookState(true)
+                                if (resource.extractData?.title ==null) {
+                                    it.tsundokuBook = viewModel.emptyBookInfo
+                                    viewModel.setRegisterBookState(false)
+                                } else {
+                                    it.tsundokuBook = resource.extractData
+                                    viewModel.setRegisterBookState(true)
+                                }
                             }
                             is Resource.ApiError -> {
                                 it.tsundokuBook = viewModel.emptyBookInfo
