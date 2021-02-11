@@ -33,12 +33,18 @@ object SearchBookInfoDataStore {
             if (it.isSuccessful) {
                 it.body()?.let {
 
-                        var bookInfo = TsundokuBook(
-                            title = it.items?.first()?.volumeInfo?.title,
-                            author = it.items?.first()?.volumeInfo?.authors?.first(),
-                            totalPageCount = it.items?.first()?.volumeInfo?.pageCount?.toInt(),
-                            imageURL = it.items?.first()?.volumeInfo?.imageLinks?.thumbnail,
-                        )
+//                        var bookInfo = TsundokuBook(
+//                            title = it.items?.first()?.volumeInfo?.title,
+//                            author = it.items?.first()?.volumeInfo?.authors?.first(),
+//                            totalPageCount = it.items?.first()?.volumeInfo?.pageCount?.toInt(),
+//                            imageURL = it.items?.first()?.volumeInfo?.imageLinks?.thumbnail,
+//                        )
+                    var bookInfo = TsundokuBook(
+                        title = "やったね",
+                        author = "なんとなく",
+                        totalPageCount = 555,
+                        imageURL = "http://books.google.com/books/content?id=RhbBoAEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+                    )
 
                         emit(Resource.Success(bookInfo))
                     }

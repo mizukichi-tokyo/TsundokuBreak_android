@@ -13,6 +13,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
@@ -35,6 +36,7 @@ class GetBookInfoViewModel @Inject constructor(
             _isbnString.value?.let {
                 searchBookInfoRepository.getBookInfo(it).collect {
                     _gotBookInfo.value = it
+                    Timber.d(it.toString())
                     }
                 }
             }
