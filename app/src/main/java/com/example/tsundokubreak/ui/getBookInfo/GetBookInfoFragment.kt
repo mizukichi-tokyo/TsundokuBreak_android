@@ -66,5 +66,4 @@ class GetBookInfoFragment : Fragment() {
                     return@setOnEditorActionListener true
                 }
     }
-
 }

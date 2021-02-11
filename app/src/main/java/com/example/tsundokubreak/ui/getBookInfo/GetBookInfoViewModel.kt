@@ -30,8 +30,14 @@ class GetBookInfoViewModel @Inject constructor(
     fun getBookInfoFromISBN() {
         viewModelScope.launch {
             isbnString.value?.let {
-                searchBookInfoRepository.getBookInfo(it).collect {
-                    _gotBookInfo.value = it
+                    if (it =="") {
+                        searchBookInfoRepository.getBookInfo(null).collect {
+                            _gotBookInfo.value = it
+                        }
+                    } else {
+                        searchBookInfoRepository.getBookInfo(it).collect {
+                            _gotBookInfo.value = it
+                        }
                     }
                 }
             }
