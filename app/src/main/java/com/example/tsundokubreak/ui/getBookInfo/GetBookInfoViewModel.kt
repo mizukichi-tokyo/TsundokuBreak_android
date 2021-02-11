@@ -42,7 +42,7 @@ class GetBookInfoViewModel @Inject constructor(
     fun setRegisterBookState(registerState: Boolean) {
         _canRegisterBook.value = registerState
     }
-    
+
     val emptyBookInfo =
         TsundokuBook(
         0,
