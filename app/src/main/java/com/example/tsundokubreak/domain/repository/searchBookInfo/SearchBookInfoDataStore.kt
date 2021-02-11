@@ -20,7 +20,7 @@ object SearchBookInfoDataStore {
             withContext(Dispatchers.IO) {
                 isbn?.let {
                     ApiClient.retrofit.getBookInfo(
-                        "isbn:$it"
+                        "isbn:" + isbn
                     )
                 }?: run {
                     ApiClient.retrofit.getBookInfo(
@@ -32,15 +32,17 @@ object SearchBookInfoDataStore {
         .onSuccess {
             if (it.isSuccessful) {
                 it.body()?.let {
-
-                        var bookInfo = TsundokuBook(
-                            title = it.items?.first()?.volumeInfo?.title,
-                            author = it.items?.first()?.volumeInfo?.authors?.first(),
-                            totalPageCount = it.items?.first()?.volumeInfo?.pageCount?.toInt(),
-                            imageURL = it.items?.first()?.volumeInfo?.imageLinks?.thumbnail,
-                        )
-
-                        emit(Resource.Success(bookInfo))
+                        if(it.items != null){
+                            var bookInfo = TsundokuBook(
+                                title = it.items.first().volumeInfo?.title,
+                                author = it.items.first().volumeInfo?.authors?.first(),
+                                totalPageCount = it.items.first().volumeInfo?.pageCount?.toInt(),
+                                imageURL = it.items.first().volumeInfo?.imageLinks?.thumbnail,
+                            )
+                            emit(Resource.Success(bookInfo))
+                        } else{
+                            emit(Resource.Empty)
+                        }
                     }
                 } else {
                 emit(Resource.ApiError(ErrorBody.fromJson(it.errorBody()?.string())))

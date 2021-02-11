@@ -6,7 +6,8 @@ import com.bumptech.glide.Glide
 import com.example.tsundokubreak.R
 
 @BindingAdapter("imageURL")
-fun ImageView.imageURL(imageURL: String) {
+fun ImageView.imageURL(imageURL: String?) {
+    imageURL ?: return
     Glide.with(context)
         .load(imageURL)
         .thumbnail(Glide.with(context).load(R.raw.loader))

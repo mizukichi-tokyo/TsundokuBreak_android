@@ -8,8 +8,8 @@ xmlns:tools="http://schemas.android.com/tools">
         name="tsundokuBook"
         type="com.example.tsundokubreak.domain.entity.bookInfo.TsundokuBook" />
     <variable
-        name="canRegister"
-        type="Boolean" />
+        name="viewModel"
+        type="com.example.tsundokubreak.ui.getBookInfo.GetBookInfoViewModel" />
 </data>
 
     <LinearLayout
@@ -28,9 +28,11 @@ xmlns:tools="http://schemas.android.com/tools">
             android:text="@string/get_book_info_text" />
 
         <EditText
+            android:id="@+id/isbnEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/ChildTitle"
+            android:text="@={viewModel.isbnString}"
             android:gravity="center_horizontal"
             android:textColor="@color/black"
             android:imeOptions="actionSearch"
@@ -69,10 +71,13 @@ xmlns:tools="http://schemas.android.com/tools">
 
             <TextView
                 android:id="@+id/title_info"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@{tsundokuBook.title}"
-                android:textSize="20sp" />
+                android:maxLines="1"
+                app:autoSizeTextType="uniform"
+                app:autoSizeMaxTextSize="20sp"
+                />
 
         </LinearLayout>
 
@@ -90,11 +95,14 @@ xmlns:tools="http://schemas.android.com/tools">
 
             <TextView
                 android:id="@+id/author_info"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@{tsundokuBook.author}"
                 android:layout_marginTop="10dp"
-                android:textSize="20sp" />
+                android:maxLines="1"
+                app:autoSizeTextType="uniform"
+                app:autoSizeMaxTextSize="20sp"
+                />
 
         </LinearLayout>
 
@@ -121,7 +129,7 @@ xmlns:tools="http://schemas.android.com/tools">
 
         <androidx.appcompat.widget.AppCompatButton
             style="@style/RegisterButton"
-            android:enabled="@{canRegister}"
+            android:enabled="@{viewModel.canRegisterBook}"
             android:text="@string/register_tsundoku" />
 
     </LinearLayout>
