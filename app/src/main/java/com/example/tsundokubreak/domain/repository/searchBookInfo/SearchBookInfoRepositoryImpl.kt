@@ -12,7 +12,7 @@ class SearchBookInfoRepositoryImpl @Inject constructor(
 ) : SearchBookInfoRepository {
 
     override suspend fun getBookInfo(): Flow<Resource<TsundokuBook>> =
-        searchBookInfoDataStore.fetchBookInfo("1")
+        searchBookInfoDataStore.fetchBookInfo(null)
 
     override suspend fun addBookToTsundoku(
         tsundokuBook: TsundokuBook,

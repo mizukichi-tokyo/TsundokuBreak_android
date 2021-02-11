@@ -20,11 +20,11 @@ object SearchBookInfoDataStore {
             withContext(Dispatchers.IO) {
                 isbn?.let {
                     ApiClient.retrofit.getBookInfo(
-                        ""
+                        "isbn:$it"
                     )
                 }?: run {
                     ApiClient.retrofit.getBookInfo(
-                        ""
+                        "isbn:0"
                     )
                 }
             }
