@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.Flow
 
 class SearchBookInfoRepositoryImpl @Inject constructor(
     private val bookListDao: BookListDao,
-    private val searchBookInfoDataStore:SearchBookInfoDataStore
+    private val searchBookInfoDataStore: SearchBookInfoDataStore
 ) : SearchBookInfoRepository {
 
     override suspend fun getBookInfo(): Flow<Resource<TsundokuBook>> =
