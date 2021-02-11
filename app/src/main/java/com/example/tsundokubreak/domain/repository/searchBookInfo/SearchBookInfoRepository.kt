@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface SearchBookInfoRepository {
 
-    suspend fun getBookInfo(): Flow<Resource<TsundokuBook>>
+    suspend fun getBookInfo(isbn: String): Flow<Resource<TsundokuBook>>
 
     suspend fun addBookToTsundoku(
         tsundokuBook: TsundokuBook,

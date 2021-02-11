@@ -25,7 +25,30 @@ class GetBookInfoFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View = FragmentGetBookInfoBinding.inflate(inflater, container, false)
             .bindLifecycleOwner(viewLifecycleOwner) {
-                it.tsundokuBook = viewModel.gotBookInfo.value
+//                lifecycleScope.launchWhenResumed {
+
+//                    viewModel.gotBookInfo.collect() { resource ->
+//                        when (resource) {
+//                            is Resource.Empty -> {
+//                                print("ok")
+//                            }
+//                            is Resource.InProgress -> {
+//                                print("ok")
+//                            }
+//                            is Resource.Success -> {
+//                                print("ok")
+//                                it.tsundokuBook = resource.extractData
+//                            }
+//                            is Resource.ApiError -> {
+//                                print("ok")
+//                            }
+//                            is Resource.NetworkError -> {
+//                                print("ok")
+//                            }
+//                        }
+//                    }
+//                }
+                it.tsundokuBook = viewModel.emptyBookInfo
                 it.canRegister = viewModel.canRegisterBook.value
     }
 }
