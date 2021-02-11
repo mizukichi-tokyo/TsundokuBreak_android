@@ -8,8 +8,8 @@ xmlns:tools="http://schemas.android.com/tools">
         name="tsundokuBook"
         type="com.example.tsundokubreak.domain.entity.bookInfo.TsundokuBook" />
     <variable
-        name="canRegister"
-        type="Boolean" />
+        name="viewModel"
+        type="com.example.tsundokubreak.ui.getBookInfo.GetBookInfoViewModel" />
 </data>
 
     <LinearLayout
@@ -121,7 +121,7 @@ xmlns:tools="http://schemas.android.com/tools">
 
         <androidx.appcompat.widget.AppCompatButton
             style="@style/RegisterButton"
-            android:enabled="@{canRegister}"
+            android:enabled="@{viewModel.canRegisterBook}"
             android:text="@string/register_tsundoku" />
 
     </LinearLayout>

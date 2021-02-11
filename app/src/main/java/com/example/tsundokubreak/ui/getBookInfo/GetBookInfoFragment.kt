@@ -34,24 +34,29 @@ class GetBookInfoFragment : Fragment() {
                         when (resource) {
                             is Resource.Empty -> {
                                 it.tsundokuBook = viewModel.emptyBookInfo
+                                viewModel.setRegisterBookState(false)
                             }
                             is Resource.InProgress -> {
                                 it.tsundokuBook = viewModel.emptyBookInfo
+                                viewModel.setRegisterBookState(false)
                             }
                             is Resource.Success -> {
                                 it.tsundokuBook = resource.extractData
+                                viewModel.setRegisterBookState(true)
                             }
                             is Resource.ApiError -> {
                                 it.tsundokuBook = viewModel.emptyBookInfo
+                                viewModel.setRegisterBookState(false)
                             }
                             is Resource.NetworkError -> {
                                 it.tsundokuBook = viewModel.emptyBookInfo
+                                viewModel.setRegisterBookState(false)
                             }
                         }
                     }
                 }
                 it.tsundokuBook = viewModel.emptyBookInfo
-                it.canRegister = viewModel.canRegisterBook.value
+                it.viewModel = viewModel
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
