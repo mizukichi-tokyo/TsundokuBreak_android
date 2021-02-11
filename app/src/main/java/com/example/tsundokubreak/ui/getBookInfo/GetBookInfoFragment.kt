@@ -1,9 +1,12 @@
 package com.example.tsundokubreak.ui.getBookInfo
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -15,10 +18,6 @@ import kotlinx.coroutines.flow.collect
 
 @AndroidEntryPoint
 class GetBookInfoFragment : Fragment() {
-
-    companion object {
-        fun newInstance() = GetBookInfoFragment()
-    }
 
     private val viewModel by viewModels<GetBookInfoViewModel>()
 
@@ -57,11 +56,15 @@ class GetBookInfoFragment : Fragment() {
                 }
                 it.tsundokuBook = viewModel.emptyBookInfo
                 it.viewModel = viewModel
+
+                it.isbnEditText.setOnEditorActionListener { view, actionId, event ->
+                    if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                        viewModel.getBookInfoFromISBN()
+                        val inputManager = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                        inputManager.hideSoftInputFromWindow(view.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
+                    }
+                    return@setOnEditorActionListener true
+                }
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        viewModel.setIsbnString("9784873116594")
-        viewModel.getBookInfoFromISBN()
-    }
 }

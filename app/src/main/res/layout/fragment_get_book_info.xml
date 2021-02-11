@@ -28,9 +28,11 @@ xmlns:tools="http://schemas.android.com/tools">
             android:text="@string/get_book_info_text" />
 
         <EditText
+            android:id="@+id/isbnEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/ChildTitle"
+            android:text="@={viewModel.isbnString}"
             android:gravity="center_horizontal"
             android:textColor="@color/black"
             android:imeOptions="actionSearch"

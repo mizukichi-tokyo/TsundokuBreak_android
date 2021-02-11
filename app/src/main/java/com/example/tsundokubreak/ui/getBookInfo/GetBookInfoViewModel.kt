@@ -25,15 +25,11 @@ class GetBookInfoViewModel @Inject constructor(
 
     val gotBookInfo: StateFlow<Resource<TsundokuBook>> = _gotBookInfo
 
-    private val _isbnString = MutableLiveData("0")
-
-    fun setIsbnString(isbn: String) {
-        _isbnString.value = isbn
-    }
+    var isbnString = MutableLiveData<String>("")
 
     fun getBookInfoFromISBN() {
         viewModelScope.launch {
-            _isbnString.value?.let {
+            isbnString.value?.let {
                 searchBookInfoRepository.getBookInfo(it).collect {
                     _gotBookInfo.value = it
                     }
@@ -46,9 +42,7 @@ class GetBookInfoViewModel @Inject constructor(
     fun setRegisterBookState(registerState: Boolean) {
         _canRegisterBook.value = registerState
     }
-
-
-
+    
     val emptyBookInfo =
         TsundokuBook(
         0,
