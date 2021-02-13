@@ -11,4 +11,5 @@
     <string name="book_author">著者名:</string>
     <string name="book_pages">ページ数:</string>
     <string name="image_description">BookImage</string>
+    <string name="slash">/</string>
 </resources>
