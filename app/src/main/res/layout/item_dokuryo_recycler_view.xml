@@ -22,10 +22,12 @@
             android:orientation="horizontal"
             android:padding="16dp"
             android:paddingEnd="32dp">
-
+            
             <ImageView
                 android:id="@+id/imageView"
-                android:src="@drawable/sample"
+                android:src="@drawable/no_image"
+                app:imageURL="@{dokuryoBook.imageURL}"
+                android:contentDescription="@string/image_description"
                 android:scaleType="fitCenter"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent"

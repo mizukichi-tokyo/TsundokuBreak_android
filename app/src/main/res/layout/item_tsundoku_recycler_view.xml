@@ -26,13 +26,17 @@
 
             <ImageView
                 android:id="@+id/imageView"
-                android:src="@drawable/sample"
+                android:src="@drawable/no_image"
+                app:imageURL="@{tsundokuBook.imageURL}"
+                android:contentDescription="@string/image_description"
                 android:scaleType="fitCenter"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 android:layout_width="60dp"
                 android:layout_height="90dp"
                 />
+
+
 
             <TextView
                 android:id="@+id/title"
