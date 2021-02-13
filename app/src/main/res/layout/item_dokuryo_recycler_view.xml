@@ -4,11 +4,8 @@
 
     <data>
         <variable
-            name="positionText"
-            type="String" />
-        <variable
-            name="pokemonText"
-            type="String" />
+            name="dokuryoBook"
+            type="com.example.tsundokubreak.domain.entity.bookInfo.TsundokuBook" />
 
     </data>
 
@@ -42,7 +39,7 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintLeft_toRightOf="@+id/imageView"
                 app:layout_constraintTop_toTopOf="parent"
-                android:text="@{pokemonText}"
+                android:text="@{dokuryoBook.title}"
                 android:layout_marginStart="10dp"
                 android:textSize="20sp" />
 
@@ -52,7 +49,7 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintLeft_toRightOf="@+id/imageView"
                 app:layout_constraintTop_toBottomOf="@+id/title"
-                android:text="@{pokemonText}"
+                android:text="@{dokuryoBook.author}"
                 android:layout_marginTop="10dp"
                 android:layout_marginStart="10dp"
                 android:textSize="20sp" />
@@ -73,7 +70,7 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintLeft_toRightOf="@+id/imageView"
                 app:layout_constraintTop_toBottomOf="@+id/author"
-                android:text="@{pokemonText}"
+                android:text="@{@string/total_pages + dokuryoBook.totalPageCount.toString()}"
                 android:layout_marginTop="10dp"
                 android:layout_marginStart="10dp"
                 android:textSize="20sp" />
