@@ -3,17 +3,15 @@ package com.example.tsundokubreak.ui.getBookInfo
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.findNavController
-import com.example.tsundokubreak.R
 import com.example.tsundokubreak.bindLifecycleOwner
 import com.example.tsundokubreak.databinding.FragmentGetBookInfoBinding
 import com.example.tsundokubreak.domain.entity.common.Resource
@@ -33,7 +31,7 @@ class GetBookInfoFragment : Fragment() {
         .bindLifecycleOwner(viewLifecycleOwner) {
             lifecycleScope.launchWhenResumed {
 
-                viewModel.gotBookInfo.collect() { resource ->
+                viewModel.gotBookInfo.collect { resource ->
                     when (resource) {
                         is Resource.Empty -> {
                             it.tsundokuBook = viewModel.emptyBookInfo
@@ -75,12 +73,15 @@ class GetBookInfoFragment : Fragment() {
             }
 
             it.registerButton.setOnClickListener {
+                activity?.window?.addFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
                 viewModel.clickRegister({
                     Toast.makeText(context, "積読に追加しました", Toast.LENGTH_SHORT).show()
                 }
                 ) {
                     Toast.makeText(context, "積読に追加に失敗しました", Toast.LENGTH_SHORT).show()
+                    activity?.window?.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
                 }
+                parentFragmentManager.popBackStack()
             }
         }
 }
