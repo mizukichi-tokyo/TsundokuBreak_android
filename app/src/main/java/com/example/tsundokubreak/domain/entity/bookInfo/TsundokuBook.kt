@@ -11,6 +11,6 @@ data class TsundokuBook(
     val author: String? = "",
     val totalPageCount: Int? = 0,
     val imageURL: String? = "",
-    val readPageCount: Int? = 0,
-    val dokuryo: Boolean? = false
+    var readPageCount: Int? = 0,
+    var dokuryo: Boolean? = false
 )

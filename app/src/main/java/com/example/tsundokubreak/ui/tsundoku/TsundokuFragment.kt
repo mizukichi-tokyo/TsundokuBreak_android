@@ -21,6 +21,7 @@ import com.example.tsundokubreak.R
 import com.example.tsundokubreak.bindLifecycleOwner
 import com.example.tsundokubreak.databinding.FragmentTsundokuBinding
 import com.example.tsundokubreak.databinding.ItemTsundokuRecyclerViewBinding
+import com.example.tsundokubreak.domain.entity.bookInfo.TsundokuBook
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 
@@ -29,23 +30,31 @@ class TsundokuFragment : Fragment() {
 
     private val viewModel by viewModels<TsundokuViewModel>()
 
-    private val BookList = listOf(
-        "ピカチュウ",
-        "カイリュー",
-        "ヤドラン",
-        "ピジョン",
-        "コダック",
-        "コラッタ",
-        "ズバット",
-        "ギャロップ",
-        "サンダース",
-        "メノクラゲ",
-        "パウワウ",
-        "カラカラ",
-        "タマタマ",
-        "ガラガラ",
-        "フシギダネ"
+    private var tsundokuBookList:List<TsundokuBook>
+    = listOf(
+        TsundokuBook(
+            0,
+            "リーダブルコード",
+            "Dustin Boswell",
+            237,
+            "http://books.google.com/books/content?id=Wx1dLwEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api")
+        ,
+        TsundokuBook(
+            1,
+            "リーダブルコード2",
+            "Dustin Boswell2",
+            2372,
+            "http://books.google.com/books/content?id=Wx1dLwEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api")
+        ,
+        TsundokuBook(
+            2,
+            "リーダブルコード3",
+            "Dustin Boswell3",
+            2373,
+            "http://books.google.com/books/content?id=Wx1dLwEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api")
+        ,
     )
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -55,7 +64,7 @@ class TsundokuFragment : Fragment() {
         .bindLifecycleOwner(viewLifecycleOwner) {
             it.recyclerView.apply {
                 activity?.window?.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
-                val bookAdapter = BookItemListAdapter(context, BookList)
+                val bookAdapter = BookItemListAdapter(context, tsundokuBookList)
 
                 bookAdapter.setOnDokuryoButtonClickListener(
                     object : BookItemListAdapter.OnDokuryoButtonClickListener {
@@ -76,7 +85,7 @@ class TsundokuFragment : Fragment() {
             }
         }
 
-    class BookItemListAdapter(context: Context, val list: List<String>) : RecyclerView.Adapter<MyViewHolder>() {
+    class BookItemListAdapter(context: Context, val list: List<TsundokuBook>) : RecyclerView.Adapter<MyViewHolder>() {
 
         private lateinit var listener: OnDokuryoButtonClickListener
 
@@ -102,8 +111,7 @@ class TsundokuFragment : Fragment() {
 
         override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
             holder.binding.let {
-                it.positionText = position.toString()
-                it.pokemonText = list[position]
+                it.tsundokuBook = list[position]
                 val lottieAnimationView = it.dokuryoButton
                 it.dokuryoButton.setOnClickListener {
                     listener.onDokuryoButton(lottieAnimationView, position)

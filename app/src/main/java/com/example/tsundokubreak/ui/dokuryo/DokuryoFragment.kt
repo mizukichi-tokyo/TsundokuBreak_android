@@ -19,6 +19,7 @@ import com.example.tsundokubreak.R
 import com.example.tsundokubreak.bindLifecycleOwner
 import com.example.tsundokubreak.databinding.FragmentDokuryoBinding
 import com.example.tsundokubreak.databinding.ItemDokuryoRecyclerViewBinding
+import com.example.tsundokubreak.domain.entity.bookInfo.TsundokuBook
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 
@@ -27,22 +28,29 @@ class DokuryoFragment : Fragment() {
 
     private val viewModel by viewModels<DokuryoViewModel>()
 
-    private val dokuryoBookList = listOf(
-        "ピカチュウ",
-        "カイリュー",
-        "ヤドラン",
-        "ピジョン",
-        "コダック",
-        "コラッタ",
-        "ズバット",
-        "ギャロップ",
-        "サンダース",
-        "メノクラゲ",
-        "パウワウ",
-        "カラカラ",
-        "タマタマ",
-        "ガラガラ",
-        "フシギダネ"
+    private var dokuryoBookList:List<TsundokuBook>
+            = listOf(
+        TsundokuBook(
+            0,
+            "リーダブルコード",
+            "Dustin Boswell",
+            237,
+            "http://books.google.com/books/content?id=Wx1dLwEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api")
+        ,
+        TsundokuBook(
+            1,
+            "リーダブルコード2",
+            "Dustin Boswell2",
+            2372,
+            "http://books.google.com/books/content?id=Wx1dLwEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api")
+        ,
+        TsundokuBook(
+            2,
+            "リーダブルコード3",
+            "Dustin Boswell3",
+            2373,
+            "http://books.google.com/books/content?id=Wx1dLwEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api")
+        ,
     )
 
     override fun onCreateView(
@@ -70,7 +78,7 @@ class DokuryoFragment : Fragment() {
                 }
             }
 
-    class DokuryoBookItemListAdapter(context: Context, val list: List<String>) : RecyclerView.Adapter<DokuryoItemViewHolder>() {
+    class DokuryoBookItemListAdapter(context: Context, val list: List<TsundokuBook>) : RecyclerView.Adapter<DokuryoItemViewHolder>() {
 
         private lateinit var listener: OnDeleteButtonClickListener
 
@@ -96,8 +104,7 @@ class DokuryoFragment : Fragment() {
 
         override fun onBindViewHolder(holder: DokuryoItemViewHolder, position: Int) {
             holder.binding.let {
-                it.positionText = position.toString()
-                it.pokemonText = list[position]
+                it.dokuryoBook = list[position]
 
                 val lottieDeleteView = it.deleteButton
                 it.deleteButton.setOnClickListener {
