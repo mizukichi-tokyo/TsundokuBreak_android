@@ -1,5 +1,6 @@
 package com.example.tsundokubreak.ui.getBookInfo
 
+import android.util.Log.d
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -12,6 +13,8 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import timber.log.Timber
+import timber.log.Timber.d
 import javax.inject.Inject
 
 @HiltViewModel
@@ -45,6 +48,19 @@ class GetBookInfoViewModel @Inject constructor(
     val canRegisterBook: LiveData<Boolean> = _canRegisterBook
     fun setRegisterBookState(registerState: Boolean) {
         _canRegisterBook.value = registerState
+    }
+
+    fun clickRegister(
+        callback: () -> Unit,
+        fallback: () -> Unit
+    ) {
+        gotBookInfo.value.extractData?.let {
+            viewModelScope.launch {
+                searchBookInfoRepository.addBookToTsundoku(it, callback) {
+                    fallback()
+                }
+            }
+        }
     }
 
     val emptyBookInfo =
