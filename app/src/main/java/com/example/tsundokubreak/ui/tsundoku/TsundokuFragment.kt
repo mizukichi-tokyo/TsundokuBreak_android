@@ -85,7 +85,7 @@ class TsundokuFragment : Fragment() {
             }
         }
 
-    class BookItemListAdapter(context: Context, val list: List<TsundokuBook>) : RecyclerView.Adapter<MyViewHolder>() {
+    class BookItemListAdapter(context: Context, val list: List<TsundokuBook>) : RecyclerView.Adapter<TsundokuViewHolder>() {
 
         private lateinit var listener: OnDokuryoButtonClickListener
 
@@ -99,8 +99,8 @@ class TsundokuFragment : Fragment() {
 
         private val layoutInflater = LayoutInflater.from(context)
 
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder =
-        MyViewHolder(
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TsundokuViewHolder =
+        TsundokuViewHolder(
             DataBindingUtil.inflate(
                 layoutInflater,
                 R.layout.item_tsundoku_recycler_view,
@@ -109,7 +109,7 @@ class TsundokuFragment : Fragment() {
             )
         )
 
-        override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+        override fun onBindViewHolder(holder: TsundokuViewHolder, position: Int) {
             holder.binding.let {
                 it.tsundokuBook = list[position]
                 val lottieAnimationView = it.dokuryoButton
@@ -126,7 +126,7 @@ class TsundokuFragment : Fragment() {
         override fun getItemCount(): Int = list.size
     }
 
-    class MyViewHolder(val binding: ItemTsundokuRecyclerViewBinding) : RecyclerView.ViewHolder(
+    class TsundokuViewHolder(val binding: ItemTsundokuRecyclerViewBinding) : RecyclerView.ViewHolder(
         binding.root
     )
 }
