@@ -31,7 +31,7 @@ import timber.log.Timber
 @AndroidEntryPoint
 class TsundokuFragment : Fragment() {
 
-    private val viewModel by viewModels<TsundokuViewModel>()
+    val viewModel by viewModels<TsundokuViewModel>()
 
     private val tsundokuListAdapter by lazy { TsundokuListAdapter() }
 
@@ -130,8 +130,8 @@ private fun TsundokuFragment.showDokuryoDialog(bookData: TsundokuBook) {
             "OK",
             R.color.orange
         ) {
+            viewModel.tsundokuToDokuryo(bookData)
             Timber.d("dokuryoDialog:positive")
-//            TODO ここでdokuryo処理を書く
         }
         .onNegative(
             "cancel",
