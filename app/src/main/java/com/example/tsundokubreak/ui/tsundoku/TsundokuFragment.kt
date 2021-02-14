@@ -58,7 +58,7 @@ class TsundokuFragment : Fragment() {
                             position: Int,
                             bookData: TsundokuBook
                         ) {
-                            catflyButtonClick(lottieAnimationView,bookData)
+                            catflyButtonClick(lottieAnimationView, bookData)
                         }
                     }
                 )
@@ -75,7 +75,11 @@ class TsundokuFragment : Fragment() {
     )
 
     interface OnDokuryoButtonClickListener {
-        fun onDokuryoButton(lottieAnimationView: LottieAnimationView, position: Int, bookData: TsundokuBook)
+        fun onDokuryoButton(
+            lottieAnimationView: LottieAnimationView,
+            position: Int,
+            bookData: TsundokuBook
+        )
     }
 
     internal inner class TsundokuListAdapter :
@@ -142,7 +146,10 @@ private fun TsundokuFragment.showDokuryoDialog(bookData: TsundokuBook) {
     activity?.window?.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
 }
 
-private fun TsundokuFragment.catflyButtonClick(lottieAnimationView: LottieAnimationView, bookData: TsundokuBook) {
+private fun TsundokuFragment.catflyButtonClick(
+    lottieAnimationView: LottieAnimationView,
+    bookData: TsundokuBook
+) {
     activity?.window?.addFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
 
     lottieAnimationView.playAnimation()
