@@ -28,7 +28,7 @@ import timber.log.Timber
 @AndroidEntryPoint
 class DokuryoFragment : Fragment() {
 
-    private val viewModel by viewModels<DokuryoViewModel>()
+    val viewModel by viewModels<DokuryoViewModel>()
 
     private val dokuryoListAdapter by lazy { DokuryoListAdapter() }
 
@@ -52,9 +52,10 @@ class DokuryoFragment : Fragment() {
 
                             override fun onDeleteButton(
                                 lottieAnimationView: LottieAnimationView,
-                                position: Int
+                                position: Int,
+                                bookData: TsundokuBook
                             ) {
-                                deleteButtonClick(lottieAnimationView)
+                                deleteButtonClick(lottieAnimationView, bookData)
                             }
                         }
                     )
@@ -67,7 +68,11 @@ class DokuryoFragment : Fragment() {
     class DokuryoViewHolder(val binding: ItemDokuryoRecyclerViewBinding) : RecyclerView.ViewHolder(binding.root)
 
     interface OnDeleteButtonClickListener {
-        fun onDeleteButton(lottieAnimationView: LottieAnimationView, position: Int)
+        fun onDeleteButton(
+            lottieAnimationView: LottieAnimationView,
+            position: Int,
+            bookData: TsundokuBook
+        )
     }
 
     internal inner class DokuryoListAdapter :
@@ -87,12 +92,13 @@ class DokuryoFragment : Fragment() {
                 )
             )
 
-        override fun onBindViewHolder(holder: DokuryoFragment.DokuryoViewHolder, position: Int) {
+        override fun onBindViewHolder(holder: DokuryoViewHolder, position: Int) {
             holder.binding.also {
                 it.dokuryoBook = getItem(position)
+                val bookData = currentList[position]
                 val lottieAnimationView = it.deleteButton
                 it.deleteButton.setOnClickListener {
-                    listener.onDeleteButton(lottieAnimationView, position)
+                    listener.onDeleteButton(lottieAnimationView, position, bookData)
                 }
             }
         }
@@ -107,7 +113,7 @@ class DokuryoFragment : Fragment() {
     }
 }
 
-private fun DokuryoFragment.showDeleteDialog() {
+private fun DokuryoFragment.showDeleteDialog(bookData: TsundokuBook) {
     AwesomeDialog.build(requireActivity())
         .title("本当に削除しますか？")
         .body("元には戻せません")
@@ -117,6 +123,7 @@ private fun DokuryoFragment.showDeleteDialog() {
             "OK",
             R.color.magenta
         ) {
+            viewModel.deleteDokuryo(bookData)
             Timber.d("deleteDialog:OK")
         }
         .onNegative(
@@ -128,12 +135,15 @@ private fun DokuryoFragment.showDeleteDialog() {
     activity?.window?.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
 }
 
-private fun DokuryoFragment.deleteButtonClick(lottieAnimationView: LottieAnimationView) {
+private fun DokuryoFragment.deleteButtonClick(
+    lottieAnimationView: LottieAnimationView,
+    bookData: TsundokuBook
+) {
     activity?.window?.addFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
 
     lottieAnimationView.playAnimation()
 
     Handler(Looper.getMainLooper()).postDelayed({
-        showDeleteDialog()
+        showDeleteDialog(bookData)
     }, 2500)
 }

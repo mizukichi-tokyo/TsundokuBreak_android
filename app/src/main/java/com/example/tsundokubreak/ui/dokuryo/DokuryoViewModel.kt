@@ -26,4 +26,10 @@ class DokuryoViewModel @Inject constructor(
             }
         }
     }
+
+    fun deleteDokuryo(dokuryoBook: TsundokuBook) {
+        viewModelScope.launch {
+            bookListRepository.deleteDokuryoBook(dokuryoBook)
+        }
+    }
 }
