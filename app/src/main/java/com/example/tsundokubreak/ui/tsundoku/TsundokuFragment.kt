@@ -1,5 +1,6 @@
 package com.example.tsundokubreak.ui.tsundoku
 
+import android.content.Context
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -116,7 +117,7 @@ class TsundokuFragment : Fragment() {
         binding.root
     )
 
-    private inner class TsundokuListAdapter :
+    internal inner class TsundokuListAdapter :
         ListAdapter<TsundokuBook, TsundokuViewHolder>(TsundokuBookListDiff()) {
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TsundokuViewHolder =
@@ -137,7 +138,7 @@ class TsundokuFragment : Fragment() {
                 }
 
                 it.tsundokuItem.setOnClickListener {
-//                    manageInputEditTextView(it)
+                    manageInputEditTextView(it)
                 }
             }
         }
@@ -183,12 +184,12 @@ private fun TsundokuFragment.catflyButtonClick(lottieAnimationView: LottieAnimat
     }, 3000)
 }
 
-//private fun TsundokuFragment.BookItemListAdapter.manageInputEditTextView(it: View) {
-//    val inputMethodManager: InputMethodManager =
-//        it.context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-//    inputMethodManager.hideSoftInputFromWindow(
-//        it.windowToken,
-//        InputMethodManager.HIDE_NOT_ALWAYS
-//    )
-//    it.clearFocus()
-//}
+private fun TsundokuFragment.TsundokuListAdapter.manageInputEditTextView(it: View) {
+    val inputMethodManager: InputMethodManager =
+        it.context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+    inputMethodManager.hideSoftInputFromWindow(
+        it.windowToken,
+        InputMethodManager.HIDE_NOT_ALWAYS
+    )
+    it.clearFocus()
+}
