@@ -33,4 +33,11 @@ class TsundokuViewModel @Inject constructor(
             bookListRepository.updateTsundokuBook(tsundokuBook)
         }
     }
+
+    fun tsundokuSetReadPageCount(tsundokuBook: TsundokuBook, readPageCount: Int) {
+        tsundokuBook.readPageCount = readPageCount
+        viewModelScope.launch {
+            bookListRepository.updateTsundokuBook(tsundokuBook)
+        }
+    }
 }

@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
+import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -121,6 +122,14 @@ class TsundokuFragment : Fragment() {
 
                 it.tsundokuItem.setOnClickListener {
                     manageInputEditTextView(it)
+                }
+
+                it.readPages.doAfterTextChanged {
+                    if (it != null) {
+                        viewModel.tsundokuSetReadPageCount(bookData, it.toString().toInt())
+                    } else {
+                        viewModel.tsundokuSetReadPageCount(bookData, 0)
+                    }
                 }
             }
         }
