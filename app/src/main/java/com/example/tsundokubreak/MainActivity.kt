@@ -1,5 +1,6 @@
 package com.example.tsundokubreak
 
+import android.annotation.SuppressLint
 import android.app.UiModeManager.MODE_NIGHT_NO
 import android.content.Context
 import android.os.Bundle
@@ -16,6 +17,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
+    @SuppressLint("WrongConstant")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         AppCompatDelegate.setDefaultNightMode(MODE_NIGHT_NO)
