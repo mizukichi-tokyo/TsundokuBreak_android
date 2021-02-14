@@ -48,7 +48,7 @@ class DokuryoFragment : Fragment() {
                 it.recyclerView.apply {
 
                     dokuryoListAdapter.setOnDeleteButtonClickListener(
-                        object : DokuryoFragment.OnDeleteButtonClickListener {
+                        object : OnDeleteButtonClickListener {
 
                             override fun onDeleteButton(
                                 lottieAnimationView: LottieAnimationView,
