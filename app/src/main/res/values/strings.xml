@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TsundokuBreak</string>
+    <string name="app_name">積読くずし</string>
     <string name="title_recommend">おすすめ</string>
     <string name="title_tsundoku">積読</string>
     <string name="title_dokuryo">読了</string>
