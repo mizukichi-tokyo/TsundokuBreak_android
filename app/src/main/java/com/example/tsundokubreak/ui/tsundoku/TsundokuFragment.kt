@@ -43,6 +43,7 @@ class TsundokuFragment : Fragment() {
         .bindLifecycleOwner(viewLifecycleOwner) {
             lifecycleScope.launchWhenResumed {
                 viewModel.tsundokuBookList.collect { resource ->
+                    setEmptyStateVisible(it, resource)
                     tsundokuListAdapter.submitList(resource)
                 }
             }
@@ -69,6 +70,16 @@ class TsundokuFragment : Fragment() {
                 findNavController().navigate(R.id.action_tsundoku_to_getBookInfo)
             }
         }
+
+    private fun setEmptyStateVisible(it: FragmentTsundokuBinding, resource: List<TsundokuBook>) {
+        if (resource.isEmpty()) {
+            it.emptyImage.visibility = View.VISIBLE
+            it.emptyText.visibility = View.VISIBLE
+        } else {
+            it.emptyImage.visibility = View.GONE
+            it.emptyText.visibility = View.GONE
+        }
+    }
 
     class TsundokuViewHolder(val binding: ItemTsundokuRecyclerViewBinding) : RecyclerView.ViewHolder(
         binding.root
