@@ -24,7 +24,6 @@ import com.example.tsundokubreak.bindLifecycleOwner
 import com.example.tsundokubreak.databinding.FragmentTsundokuBinding
 import com.example.tsundokubreak.databinding.ItemTsundokuRecyclerViewBinding
 import com.example.tsundokubreak.domain.entity.bookInfo.TsundokuBook
-import com.example.tsundokubreak.domain.entity.common.Resource
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import timber.log.Timber
@@ -50,20 +49,18 @@ class TsundokuFragment : Fragment() {
 
             it.recyclerView.apply {
                 activity?.window?.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
-//                val bookAdapter = BookItemListAdapter(context, tsundokuBookList)
 
-//                bookAdapter.setOnDokuryoButtonClickListener(
-//                    object : BookItemListAdapter.OnDokuryoButtonClickListener {
-//
-//                        override fun onDokuryoButton(
-//                            lottieAnimationView: LottieAnimationView,
-//                            position: Int
-//                        ) {
-//                            catflyButtonClick(lottieAnimationView)
-//                        }
-//                    }
-//                )
-//                adapter = bookAdapter
+                tsundokuListAdapter.setOnDokuryoButtonClickListener(
+                    object : OnDokuryoButtonClickListener {
+
+                        override fun onDokuryoButton(
+                            lottieAnimationView: LottieAnimationView,
+                            position: Int
+                        ) {
+                            catflyButtonClick(lottieAnimationView)
+                        }
+                    }
+                )
                 adapter = tsundokuListAdapter
                 layoutManager = LinearLayoutManager(context)
             }
@@ -72,53 +69,22 @@ class TsundokuFragment : Fragment() {
             }
         }
 
-//    class BookItemListAdapter(context: Context, val list: List<TsundokuBook>) : RecyclerView.Adapter<TsundokuViewHolder>() {
-//
-//        private lateinit var listener: OnDokuryoButtonClickListener
-//
-//        interface OnDokuryoButtonClickListener {
-//            fun onDokuryoButton(lottieAnimationView: LottieAnimationView, position: Int)
-//        }
-//
-//        fun setOnDokuryoButtonClickListener(listener: OnDokuryoButtonClickListener) {
-//            this.listener = listener
-//        }
-//
-//        private val layoutInflater = LayoutInflater.from(context)
-//
-//        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TsundokuViewHolder =
-//        TsundokuViewHolder(
-//            DataBindingUtil.inflate(
-//                layoutInflater,
-//                R.layout.item_tsundoku_recycler_view,
-//                parent,
-//                false
-//            )
-//        )
-//
-//        override fun onBindViewHolder(holder: TsundokuViewHolder, position: Int) {
-//            holder.binding.let {
-//                it.tsundokuBook = list[position]
-//                val lottieAnimationView = it.dokuryoButton
-//                it.dokuryoButton.setOnClickListener {
-//                    listener.onDokuryoButton(lottieAnimationView, position)
-//                }
-//
-//                it.tsundokuItem.setOnClickListener {
-//                    manageInputEditTextView(it)
-//                }
-//            }
-//        }
-//
-//        override fun getItemCount(): Int = list.size
-//    }
 
     class TsundokuViewHolder(val binding: ItemTsundokuRecyclerViewBinding) : RecyclerView.ViewHolder(
         binding.root
     )
 
+    interface OnDokuryoButtonClickListener {
+        fun onDokuryoButton(lottieAnimationView: LottieAnimationView, position: Int)
+    }
+
     internal inner class TsundokuListAdapter :
         ListAdapter<TsundokuBook, TsundokuViewHolder>(TsundokuBookListDiff()) {
+        private lateinit var listener: OnDokuryoButtonClickListener
+
+        fun setOnDokuryoButtonClickListener(listener: OnDokuryoButtonClickListener) {
+            this.listener = listener
+        }
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TsundokuViewHolder =
             TsundokuViewHolder(
@@ -134,7 +100,7 @@ class TsundokuFragment : Fragment() {
                 it.tsundokuBook = getItem(position)
                 val lottieAnimationView = it.dokuryoButton
                 it.dokuryoButton.setOnClickListener {
-//                    listener.onDokuryoButton(lottieAnimationView, position)
+                    listener.onDokuryoButton(lottieAnimationView, position)
                 }
 
                 it.tsundokuItem.setOnClickListener {
