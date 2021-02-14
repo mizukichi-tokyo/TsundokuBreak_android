@@ -22,6 +22,7 @@ import com.example.tsundokubreak.databinding.FragmentDokuryoBinding
 import com.example.tsundokubreak.databinding.ItemDokuryoRecyclerViewBinding
 import com.example.tsundokubreak.domain.entity.bookInfo.TsundokuBook
 import dagger.hilt.android.AndroidEntryPoint
+import java.util.*
 import kotlinx.coroutines.flow.collect
 import timber.log.Timber
 
@@ -41,6 +42,7 @@ class DokuryoFragment : Fragment() {
 
                 lifecycleScope.launchWhenResumed {
                     viewModel.dokuryoBookList.collect { resource ->
+                        setEmptyStateVisible(it, resource)
                         dokuryoListAdapter.submitList(resource)
                     }
                 }
@@ -64,6 +66,16 @@ class DokuryoFragment : Fragment() {
                     layoutManager = LinearLayoutManager(context)
                 }
             }
+
+    private fun setEmptyStateVisible(it: FragmentDokuryoBinding, resource: List<TsundokuBook>) {
+        if (resource.isEmpty()) {
+            it.emptyImage.visibility = View.VISIBLE
+            it.emptyText.visibility = View.VISIBLE
+        } else {
+            it.emptyImage.visibility = View.GONE
+            it.emptyText.visibility = View.GONE
+        }
+    }
 
     class DokuryoViewHolder(val binding: ItemDokuryoRecyclerViewBinding) : RecyclerView.ViewHolder(binding.root)
 

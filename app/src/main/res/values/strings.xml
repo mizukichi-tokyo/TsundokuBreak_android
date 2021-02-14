@@ -13,4 +13,5 @@
     <string name="image_description">BookImage</string>
     <string name="slash">/</string>
     <string name="total_pages">total pages:</string>
+    <string name="empty_dokuryo">まだ読了した本がありません</string>
 </resources>
