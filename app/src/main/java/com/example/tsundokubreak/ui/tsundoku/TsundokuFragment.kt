@@ -125,10 +125,10 @@ class TsundokuFragment : Fragment() {
                 }
 
                 it.readPages.doAfterTextChanged {
-                    if (it != null) {
-                        viewModel.tsundokuSetReadPageCount(bookData, it.toString().toInt())
-                    } else {
+                    if (it == null) {
                         viewModel.tsundokuSetReadPageCount(bookData, 0)
+                    } else {
+                        viewModel.tsundokuSetReadPageCount(bookData, it.toString().toInt())
                     }
                 }
             }
