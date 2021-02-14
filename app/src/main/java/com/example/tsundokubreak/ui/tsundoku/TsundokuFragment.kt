@@ -125,7 +125,7 @@ class TsundokuFragment : Fragment() {
                 }
 
                 it.readPages.doAfterTextChanged {
-                    if (it == null) {
+                    if (it.isNullOrEmpty()) {
                         viewModel.tsundokuSetReadPageCount(bookData, 0)
                     } else {
                         viewModel.tsundokuSetReadPageCount(bookData, it.toString().toInt())
