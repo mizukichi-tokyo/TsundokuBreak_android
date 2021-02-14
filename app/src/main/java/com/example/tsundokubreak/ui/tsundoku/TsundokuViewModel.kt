@@ -26,4 +26,11 @@ class TsundokuViewModel @Inject constructor(
             }
         }
     }
+
+    fun tsundokuToDokuryo(tsundokuBook: TsundokuBook) {
+        tsundokuBook.dokuryo = true
+        viewModelScope.launch {
+            bookListRepository.updateTsundokuBook(tsundokuBook)
+        }
+    }
 }

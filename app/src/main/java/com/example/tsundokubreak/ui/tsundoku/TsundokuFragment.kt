@@ -31,7 +31,7 @@ import timber.log.Timber
 @AndroidEntryPoint
 class TsundokuFragment : Fragment() {
 
-    private val viewModel by viewModels<TsundokuViewModel>()
+    val viewModel by viewModels<TsundokuViewModel>()
 
     private val tsundokuListAdapter by lazy { TsundokuListAdapter() }
 
@@ -55,9 +55,10 @@ class TsundokuFragment : Fragment() {
 
                         override fun onDokuryoButton(
                             lottieAnimationView: LottieAnimationView,
-                            position: Int
+                            position: Int,
+                            bookData: TsundokuBook
                         ) {
-                            catflyButtonClick(lottieAnimationView)
+                            catflyButtonClick(lottieAnimationView, bookData)
                         }
                     }
                 )
@@ -74,7 +75,11 @@ class TsundokuFragment : Fragment() {
     )
 
     interface OnDokuryoButtonClickListener {
-        fun onDokuryoButton(lottieAnimationView: LottieAnimationView, position: Int)
+        fun onDokuryoButton(
+            lottieAnimationView: LottieAnimationView,
+            position: Int,
+            bookData: TsundokuBook
+        )
     }
 
     internal inner class TsundokuListAdapter :
@@ -97,9 +102,10 @@ class TsundokuFragment : Fragment() {
         override fun onBindViewHolder(holder: TsundokuViewHolder, position: Int) {
             holder.binding.also {
                 it.tsundokuBook = getItem(position)
+                val bookData = currentList[position]
                 val lottieAnimationView = it.dokuryoButton
                 it.dokuryoButton.setOnClickListener {
-                    listener.onDokuryoButton(lottieAnimationView, position)
+                    listener.onDokuryoButton(lottieAnimationView, position, bookData)
                 }
 
                 it.tsundokuItem.setOnClickListener {
@@ -118,7 +124,7 @@ class TsundokuFragment : Fragment() {
     }
 }
 
-private fun TsundokuFragment.showDokuryoDialog() {
+private fun TsundokuFragment.showDokuryoDialog(bookData: TsundokuBook) {
     AwesomeDialog.build(requireActivity())
         .title("読了おめでとう！")
         .body("読了一覧へ追加移しますか？")
@@ -128,6 +134,7 @@ private fun TsundokuFragment.showDokuryoDialog() {
             "OK",
             R.color.orange
         ) {
+            viewModel.tsundokuToDokuryo(bookData)
             Timber.d("dokuryoDialog:positive")
         }
         .onNegative(
@@ -139,13 +146,16 @@ private fun TsundokuFragment.showDokuryoDialog() {
     activity?.window?.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
 }
 
-private fun TsundokuFragment.catflyButtonClick(lottieAnimationView: LottieAnimationView) {
+private fun TsundokuFragment.catflyButtonClick(
+    lottieAnimationView: LottieAnimationView,
+    bookData: TsundokuBook
+) {
     activity?.window?.addFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
 
     lottieAnimationView.playAnimation()
 
     Handler(Looper.getMainLooper()).postDelayed({
-        showDokuryoDialog()
+        showDokuryoDialog(bookData)
     }, 3000)
 }
 
