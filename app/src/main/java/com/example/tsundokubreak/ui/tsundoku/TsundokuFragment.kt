@@ -35,32 +35,6 @@ class TsundokuFragment : Fragment() {
 
     private val tsundokuListAdapter by lazy { TsundokuListAdapter() }
 
-    private var tsundokuBookList:List<TsundokuBook>
-    = listOf(
-        TsundokuBook(
-            0,
-            "リーダブルコード",
-            "Dustin Boswell",
-            237,
-            "http://books.google.com/books/content?id=Wx1dLwEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api")
-        ,
-        TsundokuBook(
-            1,
-            "リーダブルコード2",
-            "Dustin Boswell2",
-            2372,
-            "http://books.google.com/books/content?id=Wx1dLwEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api")
-        ,
-        TsundokuBook(
-            2,
-            "リーダブルコード3",
-            "Dustin Boswell3",
-            2373,
-            "http://books.google.com/books/content?id=Wx1dLwEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api")
-        ,
-    )
-
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
