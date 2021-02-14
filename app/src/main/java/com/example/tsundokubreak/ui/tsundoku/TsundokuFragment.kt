@@ -69,7 +69,6 @@ class TsundokuFragment : Fragment() {
             }
         }
 
-
     class TsundokuViewHolder(val binding: ItemTsundokuRecyclerViewBinding) : RecyclerView.ViewHolder(
         binding.root
     )
