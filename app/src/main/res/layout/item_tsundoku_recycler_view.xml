@@ -79,7 +79,7 @@
                 app:theme="@style/EditTextStyle"
                 android:imeOptions="actionDone"
                 android:gravity="center_vertical"
-                android:text=""
+                android:text="@{tsundokuBook.readPageCount.toString()}"
                 android:layout_marginStart="10dp"
                 android:textSize="20sp"
                 android:inputType="number"
