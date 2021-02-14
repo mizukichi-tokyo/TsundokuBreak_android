@@ -22,9 +22,9 @@ import com.example.tsundokubreak.databinding.FragmentDokuryoBinding
 import com.example.tsundokubreak.databinding.ItemDokuryoRecyclerViewBinding
 import com.example.tsundokubreak.domain.entity.bookInfo.TsundokuBook
 import dagger.hilt.android.AndroidEntryPoint
+import java.util.*
 import kotlinx.coroutines.flow.collect
 import timber.log.Timber
-import java.util.*
 
 @AndroidEntryPoint
 class DokuryoFragment : Fragment() {
@@ -67,8 +67,8 @@ class DokuryoFragment : Fragment() {
                 }
             }
 
-    private fun setEmptyStateVisible(it:FragmentDokuryoBinding, resource:List<TsundokuBook>) {
-        if(resource.isEmpty()){
+    private fun setEmptyStateVisible(it: FragmentDokuryoBinding, resource: List<TsundokuBook>) {
+        if (resource.isEmpty()) {
             it.emptyImage.visibility = View.VISIBLE
             it.emptyText.visibility = View.VISIBLE
         } else {
