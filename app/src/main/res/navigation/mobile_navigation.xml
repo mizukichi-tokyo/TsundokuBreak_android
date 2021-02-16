@@ -3,23 +3,38 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@+id/navigation_tsundoku">
+
+<!--    <fragment-->
+<!--        android:id="@+id/navigation_recommend"-->
+<!--        android:name="com.mizukikubota.tsundokubreak.ui.recommend.RecommendFragment"-->
+<!--        android:label="@string/title_recommend"-->
+<!--        tools:layout="@layout/fragment_recommend" />-->
 
     <fragment
-        android:id="@+id/navigation_home"
-        android:name="com.example.tsundokubreak.ui.home.HomeFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        android:id="@+id/navigation_tsundoku"
+        android:name="com.mizukikubota.tsundokubreak.ui.tsundoku.TsundokuFragment"
+        android:label="@string/title_tsundoku"
+        tools:layout="@layout/fragment_tsundoku" >
+        <action
+            android:id="@+id/action_tsundoku_to_getBookInfo"
+            app:enterAnim="@anim/nav_up_enter_anim"
+            app:exitAnim="@anim/nav_up_exit_anim"
+            app:popEnterAnim="@anim/nav_up_pop_enter_anim"
+            app:popExitAnim="@anim/nav_up_pop_exit_anim"
+            app:destination="@id/navigation_getBookInfo" />
+    </fragment>
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.example.tsundokubreak.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:id="@+id/navigation_dokuryo"
+        android:name="com.mizukikubota.tsundokubreak.ui.dokuryo.DokuryoFragment"
+        android:label="@string/title_dokuryo"
+        tools:layout="@layout/fragment_dokuryo" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.example.tsundokubreak.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:id="@+id/navigation_getBookInfo"
+        android:name="com.mizukikubota.tsundokubreak.ui.getBookInfo.GetBookInfoFragment"
+        android:label="@string/title_get_book_info"
+        tools:layout="@layout/fragment_get_book_info" />
+
 </navigation>
