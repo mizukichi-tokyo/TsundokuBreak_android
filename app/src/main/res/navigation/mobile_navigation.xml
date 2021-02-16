@@ -7,13 +7,13 @@
 
 <!--    <fragment-->
 <!--        android:id="@+id/navigation_recommend"-->
-<!--        android:name="com.mizukikubota.tsundokubreak.ui.recommend.RecommendFragment"-->
+<!--        android:name="com.example.tsundokubreak.ui.recommend.RecommendFragment"-->
 <!--        android:label="@string/title_recommend"-->
 <!--        tools:layout="@layout/fragment_recommend" />-->
 
     <fragment
         android:id="@+id/navigation_tsundoku"
-        android:name="com.mizukikubota.tsundokubreak.ui.tsundoku.TsundokuFragment"
+        android:name="com.example.tsundokubreak.ui.tsundoku.TsundokuFragment"
         android:label="@string/title_tsundoku"
         tools:layout="@layout/fragment_tsundoku" >
         <action
@@ -27,13 +27,13 @@
 
     <fragment
         android:id="@+id/navigation_dokuryo"
-        android:name="com.mizukikubota.tsundokubreak.ui.dokuryo.DokuryoFragment"
+        android:name="com.example.tsundokubreak.ui.dokuryo.DokuryoFragment"
         android:label="@string/title_dokuryo"
         tools:layout="@layout/fragment_dokuryo" />
 
     <fragment
         android:id="@+id/navigation_getBookInfo"
-        android:name="com.mizukikubota.tsundokubreak.ui.getBookInfo.GetBookInfoFragment"
+        android:name="com.example.tsundokubreak.ui.getBookInfo.GetBookInfoFragment"
         android:label="@string/title_get_book_info"
         tools:layout="@layout/fragment_get_book_info" />
 
