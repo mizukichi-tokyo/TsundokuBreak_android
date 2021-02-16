@@ -5,7 +5,7 @@
     <data>
         <variable
             name="dokuryoBook"
-            type="com.example.tsundokubreak.domain.entity.bookInfo.TsundokuBook" />
+            type="com.mizukikubota.tsundokubreak.domain.entity.bookInfo.TsundokuBook" />
 
     </data>
 
