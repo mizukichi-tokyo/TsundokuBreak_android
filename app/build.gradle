@@ -27,11 +27,11 @@ android {
     buildToolsVersion "30.0.0"
 
     defaultConfig {
-        applicationId "com.mizukikubota.tsundokubreak"
+        applicationId "com.example.tsundokubreak"
         minSdkVersion 24
         targetSdkVersion 30
         versionCode 1
-        versionName "1.0.0"
+        versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         // MEMO: annotationProcessorOptions.argumentsを使う場合は += にすること

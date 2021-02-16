@@ -6,10 +6,10 @@ xmlns:tools="http://schemas.android.com/tools">
 <data>
     <variable
         name="tsundokuBook"
-        type="com.mizukikubota.tsundokubreak.domain.entity.bookInfo.TsundokuBook" />
+        type="com.example.tsundokubreak.domain.entity.bookInfo.TsundokuBook" />
     <variable
         name="viewModel"
-        type="com.mizukikubota.tsundokubreak.ui.getBookInfo.GetBookInfoViewModel" />
+        type="com.example.tsundokubreak.ui.getBookInfo.GetBookInfoViewModel" />
 </data>
 
     <LinearLayout
