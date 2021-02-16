@@ -126,6 +126,10 @@ dependencies {
     def lottieVersion = "3.6.0"
     implementation "com.airbnb.android:lottie:$lottieVersion"
 
+    //mockK
+    testImplementation "io.mockk:mockk:1.10.5"
+
+
 }
 
 kapt {
