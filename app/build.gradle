@@ -122,9 +122,12 @@ dependencies {
     testImplementation "com.google.dagger:hilt-android-testing:$hilt_version"
     kaptTest "com.google.dagger:hilt-android-compiler:$hilt_version"
 
-
+    //lottie
     def lottieVersion = "3.6.0"
     implementation "com.airbnb.android:lottie:$lottieVersion"
+
+    //mockk
+    testImplementation "io.mockk:mockk:1.10.6"
 
 }
 
