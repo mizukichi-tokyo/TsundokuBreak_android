@@ -6,9 +6,7 @@ https://play.google.com/store/apps/details?id=com.mizukikubota.tsundokubreak
 
 ## アプリ紹介 Giff
 ![tsundoku1](https://user-images.githubusercontent.com/21151267/108617064-9de56c80-7456-11eb-93c2-896e673ca90e.gif)
-
 ![tsundoku2](https://user-images.githubusercontent.com/21151267/108617074-bd7c9500-7456-11eb-87ff-63f818ff43d4.gif)
-
 ![tsundoku3](https://user-images.githubusercontent.com/21151267/108617091-dab16380-7456-11eb-9e3f-c0694ac47d1a.gif)
 
 
