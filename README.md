@@ -38,7 +38,7 @@ https://play.google.com/store/apps/details?id=com.mizukikubota.tsundokubreak
 - [OkHttp](https://github.com/square/okhttp)
 - [Glide](https://github.com/bumptech/glide)
 - [Lottie](https://github.com/airbnb/lottie-android)
-- [Awesome Fialog](https://github.com/chnouman/AwesomeDialog)
+- [Awesome Dialog](https://github.com/chnouman/AwesomeDialog)
 ### Log/Lint/Test用ライブラリ
 - [Timber](https://github.com/JakeWharton/timber)
 - [ktlint](https://github.com/pinterest/ktlint)
