@@ -1,7 +1,7 @@
 # TsundokuBreak_android
 積読くずし_Android
 
-Google Play Store URL
+Google Play Store URL  
 https://play.google.com/store/apps/details?id=com.mizukikubota.tsundokubreak
 
 ## アプリ紹介 Giff
@@ -36,7 +36,7 @@ https://play.google.com/store/apps/details?id=com.mizukikubota.tsundokubreak
 - [MockK](https://github.com/mockk/mockk)
 
 ## 使用したAPI
-Google Books API
+Google Books API  
 https://developers.google.com/books
 
 ## 制作時間
