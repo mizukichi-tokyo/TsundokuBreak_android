@@ -17,7 +17,7 @@ https://play.google.com/store/apps/details?id=com.mizukikubota.tsundokubreak
 - Danger
 
 ## アプリ紹介 Giff
-![tsundoku1](https://user-images.githubusercontent.com/21151267/108617064-9de56c80-7456-11eb-93c2-896e673ca90e.gif)
+![tsundoku1_half](https://user-images.githubusercontent.com/21151267/108617339-f7e73180-7458-11eb-8756-d8b9b34835dd.gif)
 ![tsundoku2](https://user-images.githubusercontent.com/21151267/108617074-bd7c9500-7456-11eb-87ff-63f818ff43d4.gif)
 
 ## アプリの説明
