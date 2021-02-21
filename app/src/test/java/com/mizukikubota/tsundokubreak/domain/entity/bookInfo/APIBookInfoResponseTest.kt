@@ -1,9 +1,9 @@
 package com.mizukikubota.tsundokubreak.domain.entity.bookInfo
 
+import com.google.common.truth.Truth.assertThat
 import io.mockk.every
 import io.mockk.mockk
 import org.junit.Test
-import com.google.common.truth.Truth.assertThat
 
 class APIBookInfoResponseTest() {
     @Test
