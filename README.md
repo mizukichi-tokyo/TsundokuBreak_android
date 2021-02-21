@@ -26,6 +26,7 @@ https://play.google.com/store/apps/details?id=com.mizukikubota.tsundokubreak
 ## 使用したライブラリ
 ### 主要ライブラリ
 - [Kotlin Coroutine](https://github.com/Kotlin/kotlinx.coroutines)
+- [Kotlin Coroutine Flow](https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines.flow/-flow/index.html)
 - [Dagger Hilt](https://developer.android.com/training/dependency-injection/hilt-android?hl=ja)
 - [Navigation Component](https://developer.android.com/jetpack/androidx/releases/navigation?hl=ja)
 - [Room](https://developer.android.com/jetpack/androidx/releases/room?hl=ja)
