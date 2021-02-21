@@ -1,5 +1,4 @@
-# TsundokuBreak_android
-積読くずし_Android
+# 積読くずし_for_Android
 
 Google Play Store URL  
 https://play.google.com/store/apps/details?id=com.mizukikubota.tsundokubreak
