@@ -17,6 +17,7 @@ https://play.google.com/store/apps/details?id=com.mizukikubota.tsundokubreak
 
 ### CI/CD
 - GitHub Actions
+- Danger
 
 ## アプリの説明
 ### 積読状態を一目で管理！
