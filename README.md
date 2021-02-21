@@ -18,7 +18,7 @@ https://play.google.com/store/apps/details?id=com.mizukikubota.tsundokubreak
 
 ## アプリ紹介 Giff
 ![tsundoku1_half](https://user-images.githubusercontent.com/21151267/108617339-f7e73180-7458-11eb-8756-d8b9b34835dd.gif)
-![tsundoku2](https://user-images.githubusercontent.com/21151267/108617074-bd7c9500-7456-11eb-87ff-63f818ff43d4.gif)
+![tsundoku2_half](https://user-images.githubusercontent.com/21151267/108617365-1816f080-7459-11eb-9055-6721a89b358a.gif)
 
 ## アプリの説明
 ### 積読状態を一目で管理！
