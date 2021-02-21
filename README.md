@@ -1,12 +1,7 @@
 # 積読くずし_for_Android
 
-Google Play Store URL  
+Google Play Store URL  にて正式リリース済
 https://play.google.com/store/apps/details?id=com.mizukikubota.tsundokubreak
-
-## アプリ紹介 Giff
-![tsundoku1](https://user-images.githubusercontent.com/21151267/108617064-9de56c80-7456-11eb-93c2-896e673ca90e.gif)
-![tsundoku2](https://user-images.githubusercontent.com/21151267/108617074-bd7c9500-7456-11eb-87ff-63f818ff43d4.gif)
-
 
 ## 使用した技術
 - MVVMアーキテクチャ
@@ -20,6 +15,10 @@ https://play.google.com/store/apps/details?id=com.mizukikubota.tsundokubreak
 ### CI/CD
 - GitHub Actions
 - Danger
+
+## アプリ紹介 Giff
+![tsundoku1](https://user-images.githubusercontent.com/21151267/108617064-9de56c80-7456-11eb-93c2-896e673ca90e.gif)
+![tsundoku2](https://user-images.githubusercontent.com/21151267/108617074-bd7c9500-7456-11eb-87ff-63f818ff43d4.gif)
 
 ## アプリの説明
 ### 積読状態を一目で管理！
