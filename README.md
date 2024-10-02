@@ -1,6 +1,6 @@
 # 積読くずし_for_Android
 
-Google Play  にて正式リリース済  
+Google Play  にて正式リリース済  (現在配信停止)
 https://play.google.com/store/apps/details?id=com.mizukikubota.tsundokubreak
 
 ## 使用した技術
